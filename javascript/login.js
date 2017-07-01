@@ -1,0 +1,77 @@
+function LogIn(){
+	document.body.style.display="block";
+		var imgLogo = document.createElement("IMG");
+		imgLogo.setAttribute("src","images/tuitt_logo.png")
+		imgLogo.className = "logo";
+
+		var divLogInBody = document.createElement("DIV");
+		divLogInBody.className = "login-box-body";
+
+			var pLogInMessage = document.createElement("P");
+			pLogInMessage.className = "login-box-msg";
+				var pLogInMessageContent = document.createTextNode("Please Sign in to Start Your Session");
+
+			pLogInMessage.appendChild(pLogInMessageContent);
+
+			var formLogIn = document.createElement("FORM");
+			formLogIn.setAttribute("action","script/login.php");
+			formLogIn.setAttribute("method","POST");
+				 
+				var divForm = document.createElement("DIV");
+				divForm.className = "form-group has-feedback";
+				 	var inputUserName = document.createElement("INPUT");
+				 	inputUserName.className = "form-control";
+				 	inputUserName.setAttribute("type","text");
+				 	inputUserName.setAttribute("name","username");
+				 	inputUserName.setAttribute("placeholder","Registration ID");
+				 	inputUserName.setAttribute("required", "true");
+
+				 	divForm.appendChild(inputUserName);
+
+				var divForm2 = document.createElement("DIV");
+				divForm2.className = "form-group has-feedback";
+				 	var inputPassword = document.createElement("INPUT");
+				 	inputPassword.className = "form-control";
+				 	inputPassword.setAttribute("type","password");
+				 	inputPassword.setAttribute("name","password");
+				 	inputPassword.setAttribute("placeholder","Password");
+				 	inputPassword.setAttribute("required", "true");
+				 	
+				 	divForm2.appendChild(inputPassword);
+
+				var divRow = document.createElement("DIV");
+				divRow.className = "row";
+				 	divCol = document.createElement("DIV");
+				 	divCol.className = "col-xs-8";
+
+				 	divCol2 = document.createElement("DIV");
+				 	divCol2.className = "col-xs-4";
+				 		var buttonSigIn = document.createElement("BUTTON");
+				 		buttonSigIn.className = "btn btn-primary btn-block btn-flat";
+				 		buttonSigIn.setAttribute("type","submit");
+				 		buttonSigIn.setAttribute("name","signin");
+				 			var buttonSigInText = document.createTextNode("Sign In");
+
+				 		buttonSigIn.appendChild(buttonSigInText);
+				 	divCol2.appendChild(buttonSigIn);
+				divRow.appendChild(divCol);
+				divRow.appendChild(divCol2);
+
+
+			formLogIn.appendChild(divForm);
+			formLogIn.appendChild(divForm2);
+			formLogIn.appendChild(divRow);
+
+			var aForgotPass = document.createElement("A");
+			aForgotPass.setAttribute("href","forgotpassword.php")
+				var aForgotPassContent = document.createTextNode("I forgot my password");
+
+			aForgotPass.appendChild(aForgotPassContent);
+			
+
+		divLogInBody.appendChild(pLogInMessage);
+		divLogInBody.appendChild(formLogIn);
+		divLogInBody.appendChild(aForgotPass);
+	document.body.appendChild(imgLogo);
+	document.body.appendChild(divLogInBody);	
+}

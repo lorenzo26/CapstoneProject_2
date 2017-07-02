@@ -1,7 +1,9 @@
 function LogIn(){
 	document.body.style.display="block";
+		var divContainer_login = document.createElement("DIV");
+			divContainer_login.className = "loginContainer";
 		var imgLogo = document.createElement("IMG");
-		imgLogo.setAttribute("src","images/tuitt_logo.png")
+		imgLogo.setAttribute("src","images/logo-login.png")
 		imgLogo.className = "logo";
 
 		var divLogInBody = document.createElement("DIV");
@@ -72,6 +74,8 @@ function LogIn(){
 		divLogInBody.appendChild(pLogInMessage);
 		divLogInBody.appendChild(formLogIn);
 		divLogInBody.appendChild(aForgotPass);
-	document.body.appendChild(imgLogo);
-	document.body.appendChild(divLogInBody);	
+	divContainer_login.appendChild(imgLogo);
+	document.body.appendChild(divContainer_login);
+	document.body.appendChild(divLogInBody);
+		
 }

@@ -35,7 +35,7 @@
             }
         
         }else {
-       header("location:../?login_err=Account not found in database");
+       header("location:../login.php?login_err=Account not found in database");
         }
     }
 

@@ -98,5 +98,5 @@ $connection->close();
 	
 <?php
 	}
-	require_once('admintemplate.php');
+	require_once('studenttemplate.php');
 	?>

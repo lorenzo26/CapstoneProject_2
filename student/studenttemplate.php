@@ -32,6 +32,7 @@ $sql = "SELECT * FROM user_info where user_id='$myusername'";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php get_title(); ?></title>
+    <link rel="icon" href="../images/icon.png"/>
       <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
@@ -39,7 +40,7 @@ $sql = "SELECT * FROM user_info where user_id='$myusername'";
 <nav class="navbar-default" >
 <div class="nav-side-menu">
 
-    <div class="brand">Brand Logo
+    <div class="brand"><img src="../images/logo.png">
     </div>
     <div class="navbar-header">
      <button class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content">
@@ -61,7 +62,7 @@ $sql = "SELECT * FROM user_info where user_id='$myusername'";
                 <a href="#"><i class="fa fa-gift fa-lg"></i> Examination <span class="arrow"></span></a>
             </li>
             <ul class="sub-menu collapse" id="products">
-                <li>Exam</a></li>
+                <li><a href="exam.php?ref=<?php echo "$regid"; ?>">Exam</a></li>
                
             </ul>
            <li data-toggle="collapse" data-target="#messages" class="collapsed">
@@ -81,7 +82,7 @@ $sql = "SELECT * FROM user_info where user_id='$myusername'";
 
     <div class="dropdown">
 
-    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"><img class="image-round dropdown_avatar" src="<?php echo "$link"; ?>" alt="avatar"><?php echo "$firstname"; ?>
+    <button class="btn btn-default dropdown-toggle button-log-prof" type="button" data-toggle="dropdown"><img class="image-round dropdown_avatar" src="<?php echo "$link"; ?>" alt="avatar"><?php echo "$firstname"; ?>
     <span class="caret"></span></button>
     <div class="dropdown-menu ">
         <img class="image-round" src="<?php echo "$link"; ?>" alt="avatar">
@@ -89,7 +90,7 @@ $sql = "SELECT * FROM user_info where user_id='$myusername'";
 
 
         <hr>
-        <button class="profile">Profile</button>
+        <button class="profile"><a href="profile.php?ref=<?php echo "$regid"; ?>">Profile</a></button>
         <button class="signOut"><a href="process/logout.php">Sign out</a></button>
     </div>
   </div>
@@ -108,9 +109,7 @@ $sql = "SELECT * FROM user_info where user_id='$myusername'";
 </div>
 
 
- <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
+ <script src="../jquery/jquery-2.2.3.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     
 </body>

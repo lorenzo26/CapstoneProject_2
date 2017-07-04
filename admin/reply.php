@@ -42,7 +42,7 @@ echo '
 							   
                       $sql = "SELECT from_id,  concat(lastName,', ',firstName,' ',middleName) as Fullname, sentTo_id, messages ,date  From message JOIN user_info ON (message.from_id = user_info.user_id) WHERE from_id = $from_id limit $page1,10";
 
-                      $result = $connection->query($sql);
+                      $result = mysqli_query($connection,$sql);
 
                       if ($result->num_rows > 0) {
 
@@ -61,8 +61,8 @@ echo '
 		                </table>
                   <ul class="pagination">';
                     include('../db_config/database.php');
-                      $sql = "SELECT * FROM user_info";
-                      $result = $connection->query($sql);
+                      $sql = "SELECT * FROM message";
+                      $result = mysqli_query($connection,$sql);
 
                     if ($result->num_rows > 0) {
                       print '<tr><td colspan="10">';
@@ -117,7 +117,7 @@ echo '
                       }
                      
                        $sql = "SELECT from_id,  concat(lastName,', ',firstName,' ',middleName) as Fullname, sentTo_id, messages ,date  From message JOIN user_info ON (message.sentTo_id = user_info.user_id) WHERE from_id = $from limit $page1,10";
-                          $result = $connection->query($sql);
+                          $result = mysqli_query($connection,$sql);
 
                           if ($result->num_rows > 0) {
    
@@ -136,8 +136,8 @@ echo '
                 </table>
                     <ul class="pagination">';
                       include('../db_config/database.php');
-                    $sql = "SELECT * FROM user_info";
-                    $result = $connection->query($sql);
+                    $sql = "SELECT * FROM message";
+                    $result = mysqli_query($connection,$sql);
 
                     if ($result->num_rows > 0) {
                       print '<tr><td colspan="10">';
@@ -165,11 +165,11 @@ echo '
                         
 <br>
     <div class="modal-header">
-    <form method="POST" action="process/sendmsg.php?from='.$from.'&sendto='.$sendTo.'">       
+    <form method="POST" action="process/sendreplymsg.php?from='.$from.'&sendto='.$sendTo.'">       
       <h4 class="modal-title">Reply Message to</h4>
     </div>
     <div class="modal-body">
-      <textarea placeholder = " write a text" name="replymsg"></textarea>
+      <textarea class = "form-control" placeholder = " write a text" name="replymsg"></textarea>
     </div>
     <div class="modal-footer">
                      

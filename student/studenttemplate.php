@@ -1,7 +1,7 @@
 <?php 
 include('../db_config/database.php');
 $sql = "SELECT * FROM user_info where user_id='$myusername'";
-               $result = $connection->query($sql);
+               $result = mysqli_query($connection,$sql);
 
                   if ($result->num_rows > 0) {
         
@@ -59,17 +59,18 @@ $sql = "SELECT * FROM user_info where user_id='$myusername'";
 
             <div class="main-nav"><span>Main Navigation</span></div>
             <li data-toggle="collapse" data-target="#products" class="collapsed active">
-                <a href="#"><i class="fa fa-gift fa-lg"></i> Examination <span class="arrow"></span></a>
+                <a href="#"><i class="fa fa-gift fa-lg"></i> Activities <span class="arrow"></span></a>
             </li>
             <ul class="sub-menu collapse" id="products">
                 <li><a href="exam.php?ref=<?php echo "$regid"; ?>">Exam</a></li>
+                <li><a href="">Quiz</a></li>
                
             </ul>
            <li data-toggle="collapse" data-target="#messages" class="collapsed">
                 <a href="#"><i class="fa fa-globe fa-lg"></i> Messages <span class="arrow"></span></a>
             </li>
             <ul class="sub-menu collapse" id="messages">
-                <li>New Message</li>
+                <li><a href="newmsg.php?ref=<?php echo "$regid"; ?>">New Message</a></li>
                 <li><a href="inbox.php?ref=<?php echo "$regid"; ?>">Inbox</a></li>
                 <li><a href="sentBox.php?ref=<?php echo "$regid"; ?>">Sent Messages</a></li>
             </ul>      

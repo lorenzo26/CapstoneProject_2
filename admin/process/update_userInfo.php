@@ -16,7 +16,7 @@ if (isset($_POST['upschool'])) {
 		}else{
 			
 			$sql = "UPDATE user_info SET lastName = '$lastname', firstName = '$firstname', lastName = '$lastname', address = '$address', email = '$email', password = '$newpass' where user_id = $id";
-			$result = $connection->query($sql);
+			$result = mysqli_query($connection,$sql);
 			header("location:../profile.php?ref=$id");
 
 		}

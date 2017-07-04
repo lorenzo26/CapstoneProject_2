@@ -10,7 +10,7 @@ function display_content(){
   		$quid = $_GET['ref'];
   		
  		include('../db_config/database.php');  
-  		$sql = "SELECT * FROM exam where question_id = '$quid'";
+  		$sql = "SELECT * FROM questions where question_id = '$quid'";
 		$result = mysqli_query($connection, $sql);
 
 		if ($result->num_rows > 0) {

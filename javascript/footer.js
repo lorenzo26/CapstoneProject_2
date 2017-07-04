@@ -7,7 +7,7 @@ function myFooter() {
 		pFooter.appendChild(pFooterC);
 
 		var fig =document.createElement("FIGCAPTION");
-		var figC = document.createTextNode("OES")
+		var figC = document.createTextNode("ONLINE LEARNING SYSTEM")
 
 		fig.appendChild(figC);
 

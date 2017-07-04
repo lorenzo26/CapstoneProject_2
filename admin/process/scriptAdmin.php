@@ -11,12 +11,14 @@
 	}
 
 	require_once('../../db_config/database.php');
-		$regdate = date('jS \ F Y h:i:s A');
+		date_default_timezone_set("Asia/Kuala_Lumpur");
+		$time = date("h:i:sa");
+		$date = date("Y-M-d");
 		$stdno = rand(100000,999999).'';
 		$password = 123456;
 		$role = "Student";
 		
-		$sql = "INSERT INTO user_info(user_id, lastName, firstName, middleName, gender, email, address, role, password, regdate) VALUES ('$stdno','$stdlastname','$stdfirstname','$stdmiddlename','$gender','$stdem','$stdadd','$role','$password','$regdate')";
+		$sql = "INSERT INTO user_info(user_id, lastName, firstName, middleName, gender, email, address, role, password, regdate) VALUES ('$stdno','$stdlastname','$stdfirstname','$stdmiddlename','$gender','$stdem','$stdadd','$role','$password','$date, $time')";
 
 		$results=mysqli_query($connection,$sql);
 		

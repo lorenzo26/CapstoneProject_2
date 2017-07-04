@@ -43,21 +43,18 @@ function LogIn(){
 
 				var divRow = document.createElement("DIV");
 				divRow.className = "row";
-				 	divCol = document.createElement("DIV");
-				 	divCol.className = "col-xs-8";
 
-				 	divCol2 = document.createElement("DIV");
-				 	divCol2.className = "col-xs-4";
-				 		var buttonSigIn = document.createElement("BUTTON");
-				 		buttonSigIn.className = "btn btn-primary btn-block btn-flat";
+				
+				 	
+				 		var buttonSigIn = document.createElement("INPUT");
+				 		buttonSigIn.className = "btn btn-primary btn-block btn-flat buttonSigIn";
 				 		buttonSigIn.setAttribute("type","submit");
 				 		buttonSigIn.setAttribute("name","signin");
-				 			var buttonSigInText = document.createTextNode("Sign In");
+				 		buttonSigIn.setAttribute("value","SIGN IN")
+				 			
 
-				 		buttonSigIn.appendChild(buttonSigInText);
-				 	divCol2.appendChild(buttonSigIn);
-				divRow.appendChild(divCol);
-				divRow.appendChild(divCol2);
+				 			
+				divRow.appendChild(buttonSigIn);
 
 
 			formLogIn.appendChild(divForm);

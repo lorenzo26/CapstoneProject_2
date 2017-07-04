@@ -41,9 +41,9 @@ echo '
 										    $page1=($page*10)-10;
 			 						    }
 									   
-			   							$sql = "SELECT from_id,  concat(lastName,', ',firstName,' ',middleName) as Fullname, sentTo_id, messages ,date  From message JOIN user_info ON (message.from_id = user_info.user_id) WHERE sentTo_id = $id limit $page1,10";
+			   							$sql = "SELECT from_id,  concat(lastName,', ',firstName,' ',middleName) as Fullname, sentTo_id, messages ,date  From message JOIN user_info ON (message.from_id = user_info.user_id) WHERE sentTo_id = $id order by time limit $page1,10";
 
-             							$result = $connection->query($sql);
+             							$result = mysqli_query($connection,$sql);
 
              							if ($result->num_rows > 0) {
    
@@ -55,7 +55,7 @@ echo "
 					               				<td>".$row["date"]."</td>
 					               				<td>
 					               					
-					               					<form method='POST' action='reply.php?ref=".$row["from_id"]."&id=$id' onSubmit='return ConfirmDelete();'>
+					               					<form method='POST' action='reply.php?ref=".$row["from_id"]."&id=$id'>
 											
 														<input class = 'btn-default btn-xs' title ='REPLY " .$row["from_id"]."' type='submit' name='reply' value='REPLY'>
 														
@@ -72,8 +72,8 @@ echo '
  								</table>
         						<ul class="pagination">';
         							include('../db_config/database.php');
-										$sql = "SELECT * FROM user_info";
-										$result = $connection->query($sql);
+										$sql = "SELECT * FROM message";
+										$result = mysqli_query($connection,$sql);
 
 										if ($result->num_rows > 0) {
 											print '<tr><td colspan="10">';

@@ -20,6 +20,7 @@ function display_content(){
                   <h3 class="box-title">Questions found on Database</h3>
                 </div>
                 <div class="box-body">
+                  
 			            <table class="table">
                     <tbody>
              			    <tr>                
@@ -38,8 +39,10 @@ function display_content(){
                       }else{
                         $page1=($page*10)-10;
                       }
-                      $sql = "SELECT * FROM exam limit $page1,10";
-	             	      $result = mysqli_query($connection, $sql);
+
+                      
+                      $sql = "SELECT * From questions where exam ='checked'  limit $page1,10";
+	             	      $result = mysqli_query($connection,$sql);
                         if ($result->num_rows > 0) {
                           while($row = $result->fetch_assoc()) {
 echo "
@@ -47,8 +50,8 @@ echo "
                  				<td>".$row["question_id"]."</td>
                  				<td>".$row["question"]."</td>
                  				<td>
-             					    <a title ='EDIT " .$row["lastName"], "," ,$row["firstName"] ."' class = 'btn-primary btn-xs' href = 'updateQuestion.php?ref=".$row["question_id"]."'> EDIT
-             					    </a>
+             					    <a title ='DELETE " .$row["question_id"]."' class = 'btn-primary btn-xs' href = 'process/deleteeq.php?ref=".$row["question_id"]."'> DELETE
+                          </a>
                         </td>
                       </tr>
 ";
@@ -59,30 +62,32 @@ echo '
                   </table>
                   <ul class="pagination">';
                   include('../db_config/database.php');
-                    $sql = "SELECT * FROM exam";
-                    $result = mysqli_query($connection, $sql);
+                    $sql = "SELECT * FROM questions where exam ='checked'";
+                    $result = mysqli_query($connection,$sql);
 
                       if ($result->num_rows > 0) {
                         print '<tr><td colspan="10">';
-            						$ragents=mysqli_num_rows($result);
-            						$a = $ragents/10;
-            						$a = ceil($a);
+                        $ragents=mysqli_num_rows($result);
+                        $a = $ragents/10;
+                        $a = ceil($a);
                         for ($b=1;$b<=$a;$b++){
 ?>  
                           <li class="paginate_button">
-						                <a href="examination.php?page=<?php echo $b; ?>" ><?php echo $b. " "; ?></a>
+                            <a href="exam.php?page=<?php echo $b; ?>" ><?php echo $b. " "; ?></a>
                           </li>
 <?php
                         }
                       }
-	                    $connection->close();
+                      $connection->close();
 echo '
                   </ul>
                 </div>  
               </div>  
             </section>
+
           </div>
         </section>
+        <a title ="ADD EXAM QUESTIONS" class = "btn-primary btn-xs" href = "addexamquestions.php">ADD</a>
       </section>
     </div>
 ';

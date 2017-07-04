@@ -45,8 +45,7 @@ function display_content(){
 						          }
 									   
                         $sql = "SELECT * FROM user_info where role = 'Student' ORDER BY lastName limit $page1,10";
-                        $result = $connection->query($sql);
-
+                        $result = mysqli_query($connection,$sql);
                       if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
 echo "
@@ -77,8 +76,7 @@ echo '
                     <ul class="pagination">';
                       include('../db_config/database.php');
                         $sql = "SELECT * FROM user_info";
-                        $result = $connection->query($sql);
-
+                        $result = mysqli_query($connection,$sql);
                       if ($result->num_rows > 0) {
                         print '<tr><td colspan="10">';
                         $ragents=mysqli_num_rows($result);

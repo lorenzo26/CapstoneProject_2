@@ -16,6 +16,6 @@ if(isset($_POST['upQue'])){
     mysqli_query($connection, $sql);
     echo "$sql";
 
-    header("location:../examination.php");
+    header("location:../questions.php");
 }
 ?>

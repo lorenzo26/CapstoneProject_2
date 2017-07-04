@@ -30,7 +30,7 @@ function display_content(){
     		                  <th>Gender</th>
     						          <th>Email</th>
             						  <th>Address</th>
-            						
+            						  <th>Role</th>
             						  <th>Options</th>
                     		</tr>
                       </tbody>
@@ -45,7 +45,7 @@ function display_content(){
 								        $page1=($page*10)-10;
 						          }
 									   
-                        $sql = "SELECT * FROM user_info where role = 'Student' ORDER BY lastName limit $page1,10";
+                        $sql = "SELECT * FROM user_info ORDER BY role, lastName limit $page1,10";
                         $result = mysqli_query($connection,$sql);
 
                       if ($result->num_rows > 0) {
@@ -59,6 +59,7 @@ echo "
                    				<td>".$row["gender"]."</td>
                    				<td>".$row["email"]."</td>
                    				<td>".$row["address"]."</td>
+                          <td>".$row["role"]."</td>
                           <td>               				
                					    <form method='POST' action='createmsg.php?ref=".$row["user_id"]."&id=$id'>
 						
@@ -106,6 +107,6 @@ echo '
 	
 
 }
-require_once('admintemplate.php');
+require_once('studenttemplate.php');
 
 ?>

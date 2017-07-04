@@ -2,7 +2,7 @@
 	if(isset($_POST['send'])){
 		$sendTo=$_GET['sendto'];
 		$from=$_GET['from'];
-		$msg=$_POST['newmsg'];
+		$msg=$_POST['replymsg'];
 	}else{
 		header("location:./");
 	}

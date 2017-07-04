@@ -72,7 +72,7 @@ echo '
  								</table>
         						<ul class="pagination">';
         							include('../db_config/database.php');
-										$sql = "SELECT * FROM user_info";
+										$sql = "SELECT * FROM message";
 										$result = $connection->query($sql);
 
 										if ($result->num_rows > 0) {

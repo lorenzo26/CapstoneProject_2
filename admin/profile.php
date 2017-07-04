@@ -13,7 +13,7 @@ if (isset($_GET['ref'])) {
 
 include('../db_config/database.php');
   $sql = "SELECT * FROM user_info where user_id='$myusername'";
-  $result = $connection->query($sql);
+  $result = mysqli_query($connection,$sql);
 
   if ($result->num_rows > 0) {
 

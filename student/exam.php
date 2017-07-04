@@ -13,8 +13,8 @@ include 'check_login.php';
 			<table style="font-size:15px;">
 <?php
 	include('../db_config/database.php');
-		$sql = "SELECT * FROM exam ORDER BY RAND() limit 20";
-		$result = $connection->query($sql);
+		$sql = "SELECT * FROM questions WHERE exam ='checked' ORDER BY RAND() limit 20";
+		$result = mysqli_query($connection,$sql);
 		if ($result->num_rows > 0) {
 			$quesno = 1;
 			while($quesno <= 20) {

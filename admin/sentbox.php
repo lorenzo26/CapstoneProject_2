@@ -41,9 +41,8 @@ echo '
 			 						    }
 									   
 			   							 $sql = "SELECT from_id,  concat(lastName,', ',firstName,' ',middleName) as Fullname, sentTo_id, messages ,date  From message JOIN user_info ON (message.sentTo_id = user_info.user_id) WHERE from_id = 2123122 limit $page1,10";
-             							$result = $connection->query($sql);
+             							$result = mysqli_query($connection,$sql);
 
-             							$result = $connection->query($sql);
 
              							if ($result->num_rows > 0) {
    
@@ -62,8 +61,8 @@ echo '
  								</table>
         						<ul class="pagination">';
         							include('../db_config/database.php');
-										$sql = "SELECT * FROM user_info";
-										$result = $connection->query($sql);
+										$sql = "SELECT * FROM message";
+										$result = mysqli_query($connection,$sql);
 
 										if ($result->num_rows > 0) {
 											print '<tr><td colspan="10">';

@@ -47,7 +47,7 @@ function myNavBar() {
 
                     var aLogo =document.createElement("A");
                     aLogo.className="navbar-brand";
-                    aLogo.setAttribute("href","index.php");
+                    aLogo.setAttribute("href","./");
                     var imgLogo = document.createElement("IMG");
                         imgLogo.setAttribute("src","images/logo.png");
 
@@ -69,20 +69,20 @@ function myNavBar() {
                             formLogIn.setAttribute("method","POST");
 
                             var inputUsername = document.createElement("INPUT");
-                                // inputUsername.className = "form-control";
+                                inputUsername.className = "navlog";
                                 inputUsername.setAttribute("name","username");
                                 inputUsername.setAttribute("type","text");
                                 inputUsername.setAttribute("placeholder","username");
                                 inputUsername.setAttribute("name","username");
                                 inputUsername.setAttribute("required","true");
                             var inputPassword = document.createElement("INPUT");
-                                // inputPassword.className = "form-control";
+                                inputPassword.className = "navlog";
                                 inputPassword.setAttribute("type","password");
                                 inputPassword.setAttribute("placeholder","password")
                                 inputPassword.setAttribute("name","password");
                                 inputPassword.setAttribute("required","true");
                             var buttonSigIn = document.createElement("BUTTON");
-                        // buttonSigIn.className = "btn btn-primary btn-block btn-flat";
+                        buttonSigIn.className = "btn btn-primary btn-block btn-flat button-signin";
                         buttonSigIn.setAttribute("type","submit");
                         buttonSigIn.setAttribute("name","signin");
                             var buttonSigInText = document.createTextNode("Sign In");

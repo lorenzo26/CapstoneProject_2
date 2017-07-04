@@ -7,7 +7,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
    require_once('../db_config/database.php');
 
 $sql = "SELECT * FROM user_info where user_id='$myusername' or email='$myusername' and role='Admin'";
-$result = $connection->query($sql);
+$result = mysqli_query($connection,$sql);
 
 if ($result->num_rows > 0) {
 

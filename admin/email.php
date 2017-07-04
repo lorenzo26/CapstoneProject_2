@@ -9,7 +9,7 @@ function display_content(){
 echo '
 	<div class="borderStudent">
 		<section class="content-header">
-      		<h1>List Of Messages</h1>
+      		<h1>List Of Email Messages</h1>
       		<section class = "content">
       			<div class="row">
         			<section class="col-lg-12">
@@ -22,9 +22,9 @@ echo '
 								<table class="table">
                						<tbody>
 				               			<tr>                
-						                  <th>To</th>
+						                  <th>From</th>
+						                  <th>Email</th>
 						                  <th>Message</th>
-						                  <th>Date</th>
 				                		</tr>
 				                	</tbody>	
                						<tbody>';
@@ -40,28 +40,29 @@ echo '
 										    $page1=($page*10)-10;
 			 						    }
 									   
-			   							 $sql = "SELECT from_id,  concat(lastName,', ',firstName,' ',middleName) as Fullname, sentTo_id, messages ,date  From message JOIN user_info ON (message.sentTo_id = user_info.user_id) WHERE from_id = 2123122 limit $page1,10";
-             							$result = mysqli_query($connection,$sql);
+			   							$sql = "SELECT * From email limit $page1,10";
 
+             							$result = mysqli_query($connection,$sql);
 
              							if ($result->num_rows > 0) {
    
               								while($row = $result->fetch_assoc()) {
 echo "
 					               			<tr>
-					               				<td>".$row["Fullname"]."</td>
-					               				<td>".$row["messages"]."</td>
-					               				<td>".$row["date"]."</td
+					               				<td>".$row["name"]."</td>
+					               				<td>".$row["email"]."</td>
+					               				<td>".$row["message"]."</td>
 					               			</tr>
 ";
 										}
-									} $connection->close();
+									}
+								 	$connection->close();
 echo '              			 
  									</tbody>
  								</table>
         						<ul class="pagination">';
         							include('../db_config/database.php');
-										$sql = "SELECT * FROM message";
+										$sql = "SELECT * FROM user_info";
 										$result = mysqli_query($connection,$sql);
 
 										if ($result->num_rows > 0) {
@@ -91,5 +92,5 @@ echo '
 	';
 
 	}
-	require_once('studenttemplate.php');
+	require_once('admintemplate.php');
 	?>

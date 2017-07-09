@@ -8,7 +8,7 @@
 	}
 	require_once('../../db_config/database.php');
 	date_default_timezone_set("Asia/Kuala_Lumpur");
-	$time = date("h:i:sa");
+	$time = date("H:i:sa");
 	$date = date("Y-m-d");
 	echo "$time";
 	echo "$date";
@@ -16,10 +16,10 @@
 	$results=mysqli_query($connection,$sql);
 	echo "$sql";
 if ($results) {
-			header("location:../sentBox.php?ref=$from&message=message sent");		
+			header("location:../messages.php?ref=sentbox&id=$from&message=message sent");		
 		}else{
 			$error = $connection->error;
-    		header("location:../sentBox.php?err=$error");
+    		header("location:../messages.php?err=$error");
 		}
 	$connection->close();
 

@@ -62,7 +62,7 @@ echo '
  								</table>
         						<ul class="pagination">';
         							include('../db_config/database.php');
-										$sql = "SELECT * FROM user_info";
+										$sql = "SELECT * FROM email";
 										$result = mysqli_query($connection,$sql);
 
 										if ($result->num_rows > 0) {
@@ -74,7 +74,7 @@ echo '
 											for ($b=1;$b<=$a;$b++){
  ?> 
  											<li class="paginate_button">
- 												<a href="inbox.php?ref=<?php echo $id; ?>&page=<?php echo $b; ?>" ><?php echo $b. " "; ?></a>
+ 												<a href="email.php?ref=<?php echo $id; ?>&page=<?php echo $b; ?>" ><?php echo $b. " "; ?></a>
  											</li><?php
 										}
 									}

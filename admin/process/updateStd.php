@@ -14,6 +14,6 @@ if(isset($_POST['upstd'])){
 	;
 
     mysqli_query($connection, $sql);
-    header("location:../student.php");
+    header("location:../student.php?ref=list");
 }
 ?>

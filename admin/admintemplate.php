@@ -57,33 +57,36 @@ $sql = "SELECT * FROM user_info where user_id='$myusername'";
         
 
             <div class="main-nav"><span>Main Navigation</span></div>
-            <li data-toggle="collapse" data-target="#products" class="collapsed active">
-                <a href="#"><i class="fa fa-gift fa-lg"></i> Students <span class="arrow"></span></a>
+            <li>
+                <a href="./">HOME</a>
+            </li>
+            <li data-toggle="collapse" data-target="#products" class="collapsed">
+                <a href="#"> Students</a>
             </li>
             <ul class="sub-menu collapse" id="products">
-                <li><a href="registerStudent.php">Register New Student</a></li>
-                <li><a href="student.php">Customize Students</a></li>
+                <li><a href="student.php?ref=reg">Register New Student</a></li>
+                <li><a href="student.php?ref=list">Customize Students</a></li>
             </ul>
             <li data-toggle="collapse" data-target="#service" class="collapsed">
-                <a href="#"><i class="fa fa-globe fa-lg"></i> Activities <span class="arrow"></span></a>
+                <a href="#"> Activities</a>
             </li>
             <ul class="sub-menu collapse" id="service">
                 
-                <li><a href="exam.php">Exam</a></li>                
-                <li><a href="quiz.php">Quiz</a></li>                 
-                <li><a href="questions.php">Customize Questions</a></li>
-                <li>Results</li>
+                <li><a href="create.php?q=4">Create</a></li>                
+                <li><a href="list.php?ref=list">List</a></li>
+                <li><a href="Result.php">Result</a></li>                 
+                
                 
                
             </ul>
             <li data-toggle="collapse" data-target="#messages" class="collapsed">
-                <a href="#"><i class="fa fa-globe fa-lg"></i> Messages <span class="arrow"></span></a>
+                <a href="#"> Messages</a>
             </li>
             <ul class="sub-menu collapse" id="messages">
-                <li><a href="newmsg.php?ref=<?php echo "$regid"; ?>">New Message</a></li>
-                <li><a href="inbox.php?ref=<?php echo "$regid"; ?>">Inbox</a></li>
+                <li><a href="messages.php?id=<?php echo "$regid"; ?>&ref=student">Message</a></li>
+                <li><a href="messages.php?ref=inbox&id=<?php echo "$regid"; ?>">Inbox</a></li>
                 <li><a href="email.php">Email</a></li>
-                <li><a href="sentBox.php">Sent Messages</a></li>
+                <li><a href="messages.php?ref=sentbox&id=<?php echo "$regid"; ?>">Sent Messages</a></li>
             </ul>       
         </ul>
     </div>
@@ -101,8 +104,8 @@ $sql = "SELECT * FROM user_info where user_id='$myusername'";
 
 
         <hr>
-        <button class="profile"><a href="profile.php?ref=<?php echo "$regid"; ?>">Profile</a></button>
-        <button class="signOut"><a href="process/logout.php">Sign out</a></button>
+        <a class="profile btn btn-default btn-flat" href="profile.php?ref=<?php echo "$regid"; ?>">Profile</a>
+        <a class="signOut btn btn-default btn-flat" href="process/logout.php">Sign out</a>
     </div>
   </div>
 </div>

@@ -1,51 +1,44 @@
-
 <?php
-include 'check_login.php';
-  function get_title(){
-    echo "Update Profile";
-  }
+  include 'check_login.php';
+function get_title(){
+  echo "Update Profile";
+}
   
 function display_content(){
-?>
-<?php 
-if (isset($_GET['ref'])) {
-  $myusername = $_GET['ref'];
-
-include('../db_config/database.php');
-  $sql = "SELECT * FROM user_info where user_id='$myusername'";
-  $result = mysqli_query($connection,$sql);
-
-  if ($result->num_rows > 0) {
-
-    while($row = $result->fetch_assoc()) {
-      $avatar = $row['avatar'];
-      $gender = $row['gender'];
-      $regid = $row['user_id'];
-      $firstname = $row['firstName'];
-      $middlename = $row['middleName'];
-      $lastname = $row['lastName'];
-      $address = $row['address'];
-      $email = $row['email'];
-      $regdate = $row['regdate'];
-        if ($avatar == null) {
-          if ($gender == "Male") {
-            $link = '../images/avatar.png';
-          }else {
-            $link = '../images/avatar3.png';
+  if (isset($_GET['ref'])) {
+    $myusername = $_GET['ref'];
+    include('../db_config/database.php');
+    $sql = "SELECT * FROM user_info where user_id='$myusername'";
+    $result = mysqli_query($connection,$sql);
+    if ($result->num_rows > 0) {
+      while($row = $result->fetch_assoc()) {
+        $avatar = $row['avatar'];
+        $gender = $row['gender'];
+        $regid = $row['user_id'];
+        $firstname = $row['firstName'];
+        $middlename = $row['middleName'];
+        $lastname = $row['lastName'];
+        $address = $row['address'];
+        $email = $row['email'];
+        $regdate = $row['regdate'];
+          if ($avatar == null) {
+            if ($gender == "Male") {
+              $link = '../images/avatar.png';
+            }else {
+              $link = '../images/avatar3.png';
+            }
+          }else{
+            $link = "data:image/jpeg;base64,".base64_encode($row['avatar'] )."";
           }
-        }else{
-                   $link = "data:image/jpeg;base64,".base64_encode($row['avatar'] )."";
-                     }
-    }
+     }
   } 
 $connection->close();
 }
 
-
 ?>
 <h3>User Profile</h3>
-	<div class="row">
-    <section class="col-lg-5">
+  <div class="row">
+    <section class="col-lg-5 col-md-5 col-xl-5">
       <div class="box box-primary">
         <div class="box-body box-profile">
           <img class="image-round" src="<?php echo "$link"; ?>" alt="avatar">
@@ -63,16 +56,16 @@ $connection->close();
             </li>
           </ul>
           <form action="process/update_profilepics.php?ref=<?php echo "$regid"; ?>";" method="POST" enctype="multipart/form-data">
-      			<input type="file" name="f1" accept="image/*" required><br>			
-            <button type="submit" class="pull-right btn btn-default" name="uplogo" id="sendEmail">Update profile picture
+            <input type="file" name="f1" accept="image/*" required><br>     
+            <button type="submit" class="pull-right btn btn-default" name="uplogo">Update Avatar
                 <i class="fa fa-arrow-circle-up"></i>
             </button>
           </form>
-       	</div>
-			</div>
-		</section>
-		<section class="col-lg-7">
-			<div class="box box-primary">
+        </div>
+      </div>
+    </section>
+    <section class="col-lg-7 col-md-7 col-xl-7">
+      <div class="box box-primary">
         <div class="box-body box-profile">
           <h3>User Information</h3>
           <form action="process/update_userInfo.php?ref=<?php echo "$regid"; ?>" method="post">
@@ -86,17 +79,17 @@ $connection->close();
               <input type="password" class="form-control" id="confirm_password" name="conpass"  placeholder="confirm new password" required>
             </div>      
             <div class="box-footer clearfix">
-              <button type="submit" class="pull-right btn btn-default" name="upschool" id="sendEmail">Update Information
+              <button type="submit" class="pull-right btn btn-default" name="upschool">Update Information
                 <i class="fa fa-arrow-circle-up"></i>
               </button>
             </div>
           </form>
         </div>
       </div>
-    </section>		
-	</div>
-	
+    </section>    
+  </div>
+  
 <?php
-	}
-	require_once('studenttemplate.php');
-	?>
+  }
+  require_once('studenttemplate.php');
+  ?>

@@ -1,16 +1,15 @@
 <?php 
  require_once('../../db_config/database.php');
-if(isset($_POST['delete'])){   
-			$stdid = $_GET['ref'];
-		    $sql =  "delete from user_info where user_id = $stdid"; 
+if(isset($_POST['edit'])){   
+			$id = $_GET['ref'];
+		    $sql="SELECT from createact where create_id = '$id'"
 		    $result = mysqli_query($connection, $sql); 
-		   
 			if(!$result)
 		    {
 		        echo mysqli_error($connection);
 		      
 		    }else{
-		    	   header("location:../student.php?ref=list");
+		    	   header("location:../list.php");
 		    }
 		     
 		}

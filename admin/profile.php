@@ -45,7 +45,7 @@ $connection->close();
 ?>
 <h3>User Profile</h3>
 	<div class="row">
-    <section class="col-lg-5">
+    <section class="col-lg-5 col-md-5 col-xl-5">
       <div class="box box-primary">
         <div class="box-body box-profile">
           <img class="image-round" src="<?php echo "$link"; ?>" alt="avatar">
@@ -64,14 +64,14 @@ $connection->close();
           </ul>
           <form action="process/update_profilepics.php?ref=<?php echo "$regid"; ?>";" method="POST" enctype="multipart/form-data">
       			<input type="file" name="f1" accept="image/*" required><br>			
-            <button type="submit" class="pull-right btn btn-default" name="uplogo" id="sendEmail">Update profile picture
+            <button type="submit" class="pull-right btn btn-default" name="uplogo">Update Avatar
                 <i class="fa fa-arrow-circle-up"></i>
             </button>
           </form>
        	</div>
 			</div>
 		</section>
-		<section class="col-lg-7">
+		<section class="col-lg-7 col-md-7 col-xl-7">
 			<div class="box box-primary">
         <div class="box-body box-profile">
           <h3>User Information</h3>
@@ -86,7 +86,7 @@ $connection->close();
               <input type="password" class="form-control" id="confirm_password" name="conpass"  placeholder="confirm new password" required>
             </div>      
             <div class="box-footer clearfix">
-              <button type="submit" class="pull-right btn btn-default" name="upschool" id="sendEmail">Update Information
+              <button type="submit" class="pull-right btn btn-default" name="upschool">Update Information
                 <i class="fa fa-arrow-circle-up"></i>
               </button>
             </div>

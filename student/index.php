@@ -6,8 +6,10 @@ include 'check_login.php';
   }
   
 function display_content(){
-	
 
+	
 	}
 	require_once('studenttemplate.php');
 	?>
+
+	

@@ -23,10 +23,10 @@
 		$results=mysqli_query($connection,$sql);
 		
 		if ($results) {
-			header("location:../registerstudent.php ?message=$stdname have been registered with ID $stdno");		
+			header("location:../student.php?ref=list&message=$stdname have been registered with ID $stdno");		
 		}else{
 			$error = $connection->error;
-    		header("location:../registerstudent.php?err=$error");
+    		header("location:../message.php?err=$error");
 		}
 	$connection->close();
 

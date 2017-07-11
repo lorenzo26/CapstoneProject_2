@@ -13,29 +13,33 @@
             while ($row = mysqli_fetch_assoc($result)) {
             extract($row);
             $user_role = $row['role'];
-            $firstname = $row['firsName'];
+            $firstname = $row['firstName'];
 
 
         if ($user_role == "Admin") {
-            setcookie(loggedin, date("F jS - g:i a"), $seconds);
+            setcookie(loggedin, date("F jS - g:i a"), 360);
             session_start();           
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;
-            $_SESSION['firstName'] = $firtName;
+            $_SESSION['firstName'] = $firstName;
             header("location:../admin/index.php");
          
          }else{
-            setcookie(loggedin, date("F jS - g:i a"), $seconds);
+            setcookie(loggedin, date("F jS - g:i a"), 360);
             session_start();           
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;
-            $_SESSION['firstName'] = $firtName;
-            header("location:../student/index.php");
+            $_SESSION['firstName'] = $firstName;
+            $sql = "UPDATE `user_info` SET `online`= 1 WHERE user_id = $username";
+            mysqli_query($connection,$sql);
+            header("location:../student/index.php?ref=$username");
          }
             }
         
         }else {
+        
        header("location:../index.php?login_err=Account not found in database");
+
         }
     }
 

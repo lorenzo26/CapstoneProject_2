@@ -9,6 +9,14 @@ function display_content(){
 	if ($_GET['ref']=="student") {
 
     echo '
+    <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+         <li class ="active">Student</li>
+      </ol>
+    </section>
+     </div>
     <div class="borderStudent">
       <section class="content-header">
         <h1>List Of Student</h1>
@@ -17,7 +25,6 @@ function display_content(){
               <section class="col-lg-12">
                 <div class="box box-info">
                   <div class="box-header">
-                    <i class="fa fa-users"></i>
                     <h3 class="box-title">Students found on Database</h3>
                   </div>
                   <div class="box-body">
@@ -121,6 +128,16 @@ echo '
         $connection->close();
 
 ?>
+<div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href ="Messages.php?ref=student&id=<?php echo "$from"; ?>">Student</a></li>
+         <li class ="active">Create Message</li>
+      </ol>
+    </section>
+    </div>
+
     <div class="borderStudent">
       <section class="content-header">
         <h1></h1>
@@ -156,6 +173,14 @@ echo '
 
   if ($_GET['ref']=="inbox") {
    echo '
+   <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+         <li class ="active">Inbox</li>
+      </ol>
+    </section>
+    </div>
   <div class="borderStudent">
     <section class="content-header">
           <h1>Inbox</h1>
@@ -164,7 +189,6 @@ echo '
               <section class="col-lg-12">
                   <div class="box box-info">
                     <div class="box-header">
-                        <i class="fa fa-users"></i>
                         <h3 class="box-title">Messages found on Database</h3>
                     </div>
                     <div class="box-body">
@@ -254,7 +278,19 @@ echo '
 
 
   if ($_GET['ref']=="reply") {
+
+      $from_id =$_GET['from'];
+      $id =$_GET['id'];
     echo '
+    <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+         <li><a href="Messages.php?ref=inbox&id='.$id.'">Inbox</a></li>
+          <li class ="active">Reply</li>
+      </ol>
+    </section>
+    </div>
     <div class="borderStudent">
       <section class="content-header">
         <h1>Conversation</h1>
@@ -263,7 +299,6 @@ echo '
             <section class="col-lg-12">
               <div class="box box-info">
                 <div class="box-header">
-                    <i class="fa fa-users"></i>
                     <h3 class="box-title">Messages found on Database</h3>
                 </div>
                 <div class="box-body">
@@ -279,8 +314,7 @@ echo '
                     <tbody>';
                       include('../db_config/database.php');
                        error_reporting(0);
-                       $from_id =$_GET['from'];
-                       $id =$_GET['id'];
+                     
                        $page =$_GET['page'];
                        
                       if ($page=="" || $page=="1"){
@@ -353,6 +387,14 @@ echo '
 
   if ($_GET['ref']=="sentbox") {
     echo '
+    <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class ="active">Sentbox</li>
+      </ol>
+    </section>
+    </div>
   <div class="borderStudent">
     <section class="content-header">
           <h1>Sentbox</h1>
@@ -361,7 +403,6 @@ echo '
               <section class="col-lg-12">
                   <div class="box box-info">
                     <div class="box-header">
-                        <i class="fa fa-users"></i>
                         <h3 class="box-title">Messages found on Database</h3>
                     </div>
                     <div class="box-body">

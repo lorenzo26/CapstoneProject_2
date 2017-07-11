@@ -1,11 +1,5 @@
 <?php
-  include 'check_login.php';
-function get_title(){
-  echo "Update Profile";
-}
-  
-function display_content(){
-  if (isset($_GET['ref'])) {
+
     $myusername = $_GET['ref'];
     include('../db_config/database.php');
     $sql = "SELECT * FROM user_info where user_id='$myusername'";
@@ -33,9 +27,10 @@ function display_content(){
      }
   } 
 $connection->close();
-}
+
 
 ?>
+
 <h3>User Profile</h3>
   <div class="row">
     <section class="col-lg-5 col-md-5 col-xl-5">
@@ -89,7 +84,5 @@ $connection->close();
     </section>    
   </div>
   
-<?php
-  }
-  require_once('studenttemplate.php');
-  ?>
+
+

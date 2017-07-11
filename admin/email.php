@@ -7,6 +7,14 @@ include 'check_login.php';
   
 function display_content(){
 echo '
+<div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class ="active">Email</li>
+      </ol>
+    </section>
+    </div>
 	<div class="borderStudent">
 		<section class="content-header">
       		<h1>List Of Email Messages</h1>
@@ -15,7 +23,6 @@ echo '
         			<section class="col-lg-12">
           				<div class="box box-info">
             				<div class="box-header">
-              					<i class="fa fa-users"></i>
               					<h3 class="box-title">Messages found on Database</h3>
             				</div>
             				<div class="box-body">

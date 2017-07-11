@@ -14,7 +14,7 @@ ini_set('max_execution_time', 300);
 		$answer = $_POST['q'.$q_id];
 		$answer = "INSERT INTO result(student_answer, question_id,student_id, question_num) VALUES ('$answer','$qid','$stdid',$q_id)";
 		$results = mysqli_query($connection,$answer);
-		$sql2 = "SELECT * from questions q JOIN result r ON (q.question_id=r.question_id) Where r.student_id = $stdid";
+		$sql2 = "SELECT * from questions q JOIN result r ON (q.question_id=r.question_id) Where r.student_id = $stdid and create_id = $id";
 		$result = mysqli_query($connection,$sql2);
 		$q_id++;
 
@@ -38,10 +38,10 @@ ini_set('max_execution_time', 300);
 
 
 	if ($results) {
-		foreach($connection->query('SELECT COUNT(mark) FROM result where mark = "correct"') as $row){
-			$countcorrect = $row['COUNT(mark)'] ;
-			foreach($connection->query('SELECT COUNT(question_num) FROM result') as $row){
-				$countnumques = $row['COUNT(question_num)'] ;  
+		foreach($connection->query("SELECT COUNT(r.mark) FROM result r JOIN questions q ON (r.question_id=q.question_id) where r.mark = 'correct' AND r.student_id = $stdid AND q.create_id = $id ") as $row){
+			$countcorrect = $row['COUNT(r.mark)'] ;
+			foreach($connection->query("SELECT COUNT(question_id) FROM questions where create_id = $id ") as $row){
+				$countnumques = $row['COUNT(question_id)'] ;  
 				$percent = (($countcorrect/$countnumques)*100);
 				if ($percent>=75) {
 					$status="PASS";
@@ -55,7 +55,7 @@ ini_set('max_execution_time', 300);
 						$fullname = $row['fullname'];
 						$sql = "INSERT INTO result_info(student_id,student_name, score, status, create_id) VALUES ('$stdid','$fullname', '$percent','$status','$id') ";
 						$result = mysqli_query($connection,$sql);
-						echo "$sql<br>";
+						
 					}
 				}
 			}

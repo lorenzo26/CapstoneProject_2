@@ -32,6 +32,7 @@ include('../db_config/database.php');
        <link rel="icon" href="../images/icon.png"/>
       <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body onload="myFooter()">
     <nav class="navbar-default" >
@@ -53,10 +54,10 @@ include('../db_config/database.php');
                         <span>Main Navigation</span>
                     </div>
                     <li ">
-                        <a href="./"><i class="fa fa-gift fa-lg"></i> HOME </span></a>
+                        <a href="./?ref=<?php echo "$regid";  ?>"> HOME </span></a>
                     </li>
                     <li data-toggle="collapse" data-target="#products" class="collapsed">
-                        <a href="#"><i class="fa fa-gift fa-lg"></i> Activities </span></a>
+                        <a href="#"> Activities </span></a>
                     </li>
                 <ul class="sub-menu collapse" id="products">
                     <li>
@@ -67,7 +68,7 @@ include('../db_config/database.php');
                     </li>
                 </ul>
                  <li data-toggle="collapse" data-target="#messages" class="collapsed">
-                    <a href="#"><i class="fa fa-globe fa-lg"></i> Messages</span></a>
+                    <a href="#"> Messages</span></a>
                  </li>
                 <ul class="sub-menu collapse" id="messages">
                     <li><a href="messages.php?id=<?php echo "$regid"; ?>&ref=student">Message</a></li>
@@ -84,8 +85,8 @@ include('../db_config/database.php');
                     <img class="image-round" src="<?php echo "$link"; ?>" alt="avatar">
                     <h4 class="name2"><?php echo "$firstname"; ?></h4>
                     <hr>
-                    <a class="profile btn btn-default btn-flat" href="profile.php?ref=<?php echo "$regid"; ?>">Profile</a>
-                    <a class="signOut btn btn-default btn-flat" href="process/logout.php">Sign out</a>
+                    <a class="profile btn btn-default btn-flat" href="./?ref=<?php echo "$regid"; ?>">Profile</a>
+                    <a class="signOut btn btn-default btn-flat" href="process/logout.php?ref=<?php echo "$regid"; ?>">Sign out</a>
                 </div>
             </div>
         </div>

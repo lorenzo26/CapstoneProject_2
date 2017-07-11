@@ -12,6 +12,14 @@ function display_content(){
 	include('../db_config/database.php');
 if ($_GET['ref']=="pass") {
 	echo '
+  <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+         <li class ="active"<i class="fa fa-dashboard"></i>Result</li>
+      </ol>
+    </section>
+    </div>
 		<div class="borderStudent">
 			<section class="content-header">
       		<h1>Exam Result</h1>
@@ -103,6 +111,14 @@ echo '
 }
 if ($_GET['ref']=="fail") {
 echo '
+<div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+         <li class ="active"<i class="fa fa-dashboard"></i>Result</li>
+      </ol>
+    </section>
+    </div>
 		<div class="borderStudent">
 			<section class="content-header">
       		<h1>Exam Result</h1>

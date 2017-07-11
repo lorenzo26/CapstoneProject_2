@@ -11,7 +11,7 @@ if(isset($_POST['delete'])){
 		        echo mysqli_error($connection);
 		      
 		    }else{
-		    	   header("location:../list.php");
+		    	   header("location:../list.php?ref=list");
 		    }
 		     
 		}

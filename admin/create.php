@@ -8,8 +8,15 @@ include 'check_login.php';
 function display_content(){
 	if(@$_GET['q']==4 && !(@$_GET['step']) ) {
 echo '	
-  <div class="row">
-    <span class="title1" ><b>Create</b></span><br /><br />
+<div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+         <li class ="active"<i class="fa fa-dashboard"></i>Create</li>
+      </ol>
+    </section>
+  <div class="row create">
+    <span class="title1" ><b>Create Activity</b></span><br /><br />
       <div class="col-md-3"></div><div class="col-md-6">    
       <form class="form-horizontal title1" name="form" action="process/update_create.php?q=addquiz"  method="POST">
       <fieldset>
@@ -41,8 +48,16 @@ echo '
 
 if(@$_GET['q']==4 && (@$_GET['step'])==2 ) {
 echo ' 
+<div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href ="create.php?q=4">Create</a></li>
+         <li class ="active">Enter Question</li>
+      </ol>
+    </section>
       <div class="row">
-        <span class="title1" ><b>Enter Question Details</b></span><br /><br />
+        
           <div class="col-md-3"></div><div class="col-md-6">
 
           <form class="form-horizontal title1" name="form" action="process/addques.php?eid='.@$_GET['eid'].'&n='.@$_GET['n'].'"  method="POST">
@@ -100,7 +115,7 @@ echo '
         <div class="form-group">
           <label class="col-md-12 control-label" for=""></label>
             <div class="col-md-12"> 
-              <input  type="submit"class="btn btn-primary" value="sub Submit" class="btn btn-primary" name="addq"/>
+              <input  type="submit"class="btn btn-primary" value="Submit" class="btn btn-primary" name="addq"/>
             </div>
         </div>
 

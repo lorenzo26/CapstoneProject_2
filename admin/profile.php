@@ -43,6 +43,13 @@ $connection->close();
 
 
 ?>
+<div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+         <li class ="active">Profile</li>
+      </ol>
+    </section>
 <h3>User Profile</h3>
 	<div class="row">
     <section class="col-lg-5 col-md-5 col-xl-5">

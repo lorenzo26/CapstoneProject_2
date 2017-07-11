@@ -11,32 +11,32 @@ body{
   text-align: center;
 }
 
-main-nav {}
+
   .image-round{
     border-radius: 50%;
     width: 50%;
+    object-fit: cover;
 }
 
 .dropdown_avatar {
-  width: 20%;
+  width: 40px;
   margin-right:  15px; 
 }
 .btn {
-  width: 50%;
+  
   height: 50px;
-  float: right;
+ 
 }
 
 .dropdown {
   height: 50px;
   float: right;
+  position: relative;
 }
 
 .dropdown-menu {
-  left: 120px;
   color: white;
   text-align: center;
-  width: 55%;
 }
 
 .profile{
@@ -90,7 +90,7 @@ width: 40%;
   width: 20%;
   height: 34px;
   margin-top: 7px;
-  margin-right:  5px;
+  float: right;
 }
 
 .buttonSigIn{
@@ -301,10 +301,11 @@ tbody {
 .borderStudent{
   width: 95%;
    margin: 0 auto;
+
 }
 
 .content {
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .footer {
@@ -367,7 +368,7 @@ tbody {
 
 
 .title1 {
-  margin-left:20%;
+  /*margin-left:20%;*/
   font-size:30px;
   text-align: center;
 }
@@ -381,8 +382,73 @@ tbody {
 }
 
 .border {
-  border: 1px solid black;
+ 
   margin: 0px;
   width: 95%;
   margin: 20px 20px;
+}
+.create {
+  padding-top: 50px;
+  text-align: center;
+
+}
+
+.icon{
+  /*position: absolute;*/
+    right: 20px;
+    text-align: center;
+    z-index: 0;
+    bottom: 20px;
+    color: rgba(0,0,0,0.15)
+}
+
+.student-reg{
+  background-color: #00c0ef;
+  border-radius: 20px;
+  padding-bottom: 0;
+}
+
+.passmark {
+      background-color: #00a65a;
+      border-radius: 20px;
+      padding-bottom: 0;
+}
+
+.fail{
+      background-color: #dd4b39;
+      border-radius: 20px;
+      padding-bottom: 0;
+}
+
+.small-box-footer{
+      position: relative;
+    text-align: center;
+    padding: 3px 0;
+    color: #fff;
+    color: rgba(255,255,255,0.8);
+    display: block;
+    z-index: 10;
+    background: rgba(0,0,0,0.1);
+    text-decoration: none;
+    bottom: 0;
+
+}
+.breadcrumb{
+position: relative;
+    margin-top: 5px;
+    float: none;
+    background: #d2d6de;
+    padding-left: 10px;
+  }
+  .content-header{
+    padding: 0;
+  }
+
+
+.inline li {
+    display: inline-block;
+}
+.add{
+  margin-top: 20px;
+  position: absolute;
 }

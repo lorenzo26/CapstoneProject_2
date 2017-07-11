@@ -9,6 +9,15 @@ function display_content(){
 	include('../db_config/database.php');
 	
 echo '
+
+   <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+         <li class ="active"></i>Result</li>
+      </ol>
+    </section>
+    </div>
 		<div class="borderStudent">
 			<section class="content-header">
       		<h1>Exam Result</h1>
@@ -24,9 +33,9 @@ echo '
 				             			<tbody>
 											<tr>
 												<th>Student Id</th>
+                        <th>Title</th>
 												<th>Name</th>
 												<th>Score</th>
-												<th>Status</th>
 												<th>Option</th>
 											</tr>
 										</tbody>
@@ -40,7 +49,7 @@ echo '
                       					}else{
                         				$page1=($page*10)-10;
                       					}
-                      					$sql = "SELECT * from result_info limit $page1,10";
+                      					$sql = "SELECT * from result_info r JOIN createact c ON (r.create_id=c.create_id) limit $page1,10";
 										$result = mysqli_query($connection,$sql);
 										if ($result->num_rows > 0) {	
 											
@@ -48,9 +57,9 @@ echo '
 echo '
 											<tr>
 												<td>'.$row['student_id'].'</td>
+                        <td>'.$row['title'].'</td>
 												<td>'.$row['student_name'].'</td>
 												<td>'.$row['score'].'</td>
-												<td>'.$row['status'].'</td>
 												<td>
 													<form method="POST" action="process/deleteResult.php?stid='.$row['student_id'].'&id='.$row['create_id'].'" onSubmit="return ConfirmDelete();">
 						

@@ -9,6 +9,14 @@ function display_content(){
 
 if($_GET['ref']=="reg"){
   echo '
+  <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+         <li class ="active">Register Student</li>
+      </ol>
+    </section>
+    </div>
   <h3> Register Student </h3>
   <div class = "border_registerform">
     <form action="process/regStudent.php" method="post">
@@ -40,6 +48,14 @@ if($_GET['ref']=="reg"){
 
 if($_GET['ref']=="list"){
 	echo '
+  <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+         <li class ="active">Registered Student</li>
+      </ol>
+    </section>
+    </div>
 		<div class="borderStudent">
 			<section class="content-header">
       	<h1>List Of Student</h1>
@@ -48,7 +64,6 @@ if($_GET['ref']=="list"){
               <section class="col-lg-12">
                 <div class="box box-info">
                   <div class="box-header">
-                    <i class="fa fa-users"></i>
                     <h3 class="box-title">Students found on Database</h3>
                   </div>
                   <div class="box-body">
@@ -61,8 +76,7 @@ if($_GET['ref']=="list"){
     		                  <th>Middle Name</th>
     		                  <th>Gender</th>
     						          <th>Email</th>
-            						  <th>Address</th>
-            						
+            						  <th>Address</th>            						
             						  <th>Options</th>
                     		</tr>
                       </tbody>
@@ -90,13 +104,19 @@ echo "
                    				<td>".$row["email"]."</td>
                    				<td>".$row["address"]."</td>
                           <td>
+                        
+                        <div class= 'inline'>                     
+                            <li>    
                					    <a title ='EDIT " .$row["lastName"], "," ,$row["firstName"] ."' class = 'btn-primary btn-sm' href = 'student.php?id=".$row["user_id"]."&ref=update'> EDIT
                					    </a>
-               				
+               				 </li>  
+                        <li>  
                					    <form method='POST' action='process/deleteStd.php?ref=".$row["user_id"]."' onSubmit='return ConfirmDelete();'>
 						
                               <input class = 'btn-default btn-sm' title ='DELETE " .$row["lastName"], "," ,$row["firstName"] ."' type='submit' name='delete' value='DELETE'>
                             </form>
+                             </li>  
+                              </div>
                           </td>
                			    </tr>
 ";
@@ -160,6 +180,16 @@ $connection->close();
 // }
 
 echo '
+
+<div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+         <li><a href="student.php?ref=list">Registered Student</a></li>
+         <li class ="active"></i>Update Student</li>
+      </ol>
+    </section>
+    </div>
   <h3> Update Student '.$stdid.' </h3>
   <div class = "border_registerform">
     <form action="process/updateStd.php?ref='.$stdid.'" method="post">

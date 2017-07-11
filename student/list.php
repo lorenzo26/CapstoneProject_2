@@ -9,6 +9,15 @@ function display_content(){
 if(@$_GET['q']==1){
   $act_id =$_GET['ref'];
 	echo '
+
+    <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active"> List</a></li>
+      </ol>
+    </section>
+    </div>
 		<div class="borderStudent">
 			<section class="content-header">
       	<h1>List Of Activity</h1>
@@ -120,15 +129,43 @@ include('../db_config/database.php');
 
       }
 echo '
+  <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="list.php?q=1&ref='.$stdid.'">List</a></li>
+        <li class="active">Assesment</li>
+      </ol>
+    </section>
+    </div>
     <div>
       <h4>Assessment Taken</h4>
       You have already attempt the exam..
       Click <a href="Result.php?id='.$stdid.'&ref=result1">here</a> to see the Result
     </div>';
     }elseif ($examstate == "locked") {
-      echo "LOCKED";
+
+      echo '        <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="list.php?q=1&ref='.$stdid.'">Locked</a></li>
+        <li class="active">Locked</li>
+      </ol>
+    </section>
+    </div>
+    LOCKED';
     } elseif ($countcol==0) {
-      echo "No questions";      
+      echo '        <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="list.php?q=1&ref='.$stdid.'">List</a></li>
+        <li class="active">Locked</li>
+      </ol>
+    </section>
+    </div>
+    No questions';      
     }else{
     ?>
   <div>

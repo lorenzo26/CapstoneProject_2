@@ -9,6 +9,14 @@ function display_content(){
 if ($_GET['ref']=="list") {
 
 	echo '
+   <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">List</li>
+      </ol>
+    </section>
+    </div>
 		<div class="borderStudent">
 			<section class="content-header">
       	<h1>List Of Student</h1>
@@ -17,7 +25,6 @@ if ($_GET['ref']=="list") {
               <section class="col-lg-12">
                 <div class="box box-info">
                   <div class="box-header">
-                    <i class="fa fa-users"></i>
                     <h3 class="box-title">Students found on Database</h3>
                   </div>
                   <div class="box-body">
@@ -53,15 +60,21 @@ echo "
                    				<td>".$row["numque"]."</td>
                           <td>".$row['status']."</td>
                           		<td>
-               				   
+                              <div class='inline'>
+                          
+                            <li>               				   
                             <form method='POST' action='list.php?ref=edit&id=".$row["create_id"]."'>
             
                               <input class = 'btn-default btn-sm' title ='EDIT " .$row["title"]."' type='submit' name='edit' value='EDIT'>
                             </form>
+                            </li>  
+                            <li>  
                					    <form method='POST' action='process/deletelist.php?ref=".$row["create_id"]."' onSubmit='return ConfirmDelete();'>
             
                               <input class = 'btn-default btn-sm' title ='DELETE " .$row["title"]."' type='submit' name='delete' value='DELETE'>
                             </form>
+                            </li> 
+                            <li>   
                             <form method='POST' action='process/list.php?ref=".$row["create_id"]."'>";
                          if ($row['status']=="locked") {
                            echo "  <input class = 'btn-default btn-sm' title ='Unlock " .$row["title"]."' type='submit' name='unlock' value='Unlock'>";
@@ -71,6 +84,8 @@ echo "
    echo "             
 
       </form>     
+      <li>  
+      </div>
                           </td>
                			    </tr>
 ";
@@ -122,6 +137,15 @@ echo '
     $sql = "SELECT * FROM questions q JOIN createact c ON (q.create_id=c.create_id) where c.create_id = $id limit $page1,10";
      $result =mysqli_query($connection, $sql);
     echo '
+    <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="list.php?ref=list">List</a></li>
+        <li class="active">Edit</li>
+      </ol>
+    </section>
+    </div>
     <div class="borderStudent">
       <section class="content-header">
         <h1>List Of Question</h1>
@@ -130,7 +154,6 @@ echo '
               <section class="col-lg-12">
                 <div class="box box-info">
                   <div class="box-header">
-                    <i class="fa fa-users"></i>
                     <h3 class="box-title">Students found on Database</h3>
                   </div>
                   <div class="box-body">
@@ -161,12 +184,21 @@ echo '
                           <td>".$row["option4"]."</td>
                           <td>".$row["answer"]."</td>
                           <td>
+                          <div class='inline'>
+                          
+                            <li>
                             <a title ='EDIT " .$row["question"]."' class = 'btn-primary btn-sm' href = 'list.php?qid=".$row["question_id"]."&cid=".$row["create_id"]."&ref=editQue'> EDIT
                             </a>
+                              </li>
+                             <li>
+                            
                             <form method='POST' action='process/list.php?qid=".$row["question_id"]."&cid=".$row["create_id"]."' onSubmit='return ConfirmDelete();'>
             
                               <input class = 'btn-default btn-sm' title ='DELETE " .$row["question"]."' type='submit' name='delete' value='DELETE'>
                             </form> 
+                             </li>
+                             
+                            </div>
                           </td>
                         </tr>
 ";
@@ -201,7 +233,7 @@ echo "
           </div>
         </section>
       </section>
-      <a title ='ADD Question' class = 'btn-primary btn-lg' href = 'list.php?cid=$id&ref=addq'> ADD</a>
+      <a title ='ADD Question' class = 'add btn-primary btn-lg' href = 'list.php?cid=$id&ref=addq'> ADD</a>
     </div>
 
  
@@ -212,8 +244,19 @@ if ($_GET['ref']=="editQue") {
   $cid = $_GET['cid'];
   $qid = $_GET['qid'];
  echo ' 
-  <div class="row">
-    <span class="title1" style="margin-left:40%;font-size:30px;"><b>Enter Question Details</b></span><br /><br />
+
+ <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="list.php?ref=list">List</a></li>
+        <li><a href="list.php?ref=edit&id='.$cid.'">Edit</a></li>
+        <li class="active">Edit Question</li>
+      </ol>
+    </section>
+    </div>
+  <div class="row create">
+    <span class="title1" "><b>Enter Question Details</b></span><br /><br />
     <div class="col-md-3"></div><div class="col-md-6">
       <form class="form-horizontal title1" name="form" action="process/addques.php?qid='.$qid.'&cid='.$cid.'"  method="POST">
         <fieldset>
@@ -289,7 +332,16 @@ if ($_GET['ref']=="addq") {
   $cid = $_GET['cid'];
 
   echo '
-
+  <div class="content-wrapper">
+    <section class="content-header">
+      <ol class="breadcrumb">
+        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="list.php?ref=list">List</a></li>
+        <li><a href="list.php?ref=edit&id='.$cid.'">Edit</a></li>
+        <li class="active">Add Question</li>
+      </ol>
+    </section>
+    </div>
   <div class="row">
     <span class="title1" ><b>Enter Question Details</b></span><br /><br />
       <div class="col-md-3"></div><div class="col-md-6">

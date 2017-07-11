@@ -11,6 +11,31 @@
 </head>
 <body onload="myNavBar(),mybanner(),content(),myFooter()">
 
+	<div id="myModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	        <h4 class="modal-title">ERRO LOGIN</h4>
+	      </div>
+	      <div class="modal-body">
+	        <p>
+	        	<?php
+	        		if(isset($_GET['login_err'])){
+	        			echo $_GET['login_err'];
+	        		}
+	        	?>
+	        </p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+
 
 	<script src="javascript/navbar.js"></script>
 	<script src="javascript/banner.js"></script>
@@ -18,7 +43,12 @@
 	<script src="javascript/footer.js"></script>
 	<script src="jquery/jquery-2.2.3.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="javascript/javascript.js"></script>
+	<?php
+		if(isset($_GET['login_err'])){ ?>
+			<script type="text/javascript">
+				$('#myModal').modal('show');
+			</script>
+		<?php	} ?>
 	  
 </body>
 </html>

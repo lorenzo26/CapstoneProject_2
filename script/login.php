@@ -22,7 +22,9 @@
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username;
             $_SESSION['firstName'] = $firstName;
-            header("location:../admin/index.php");
+            $sql = "UPDATE `user_info` SET `online`= 1 WHERE user_id = $username";
+            mysqli_query($connection,$sql);
+            header("location:../admin/./");
          
          }else{
             setcookie(loggedin, date("F jS - g:i a"), 360);
@@ -32,7 +34,7 @@
             $_SESSION['firstName'] = $firstName;
             $sql = "UPDATE `user_info` SET `online`= 1 WHERE user_id = $username";
             mysqli_query($connection,$sql);
-            header("location:../student/index.php?ref=$username");
+            header("location:../student/./?ref=$username");
          }
             }
         

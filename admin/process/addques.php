@@ -24,9 +24,10 @@ $result = mysqli_query($connection,$sql);
  }
  if ($result) {
 	echo "$sql";
-header("location:../list.php?ref=list");
+header("location:../list.php?ref=list&message=Questions have been created");
 }else{
 	$error = $connection->error;
+	header("location:../list.php?ref=list&message=$error");
 }
  
 
@@ -46,7 +47,7 @@ $qid = $_GET['qid'];
 	$sql = "UPDATE questions SET question='$question', option1='$option1', option2='$option2', option3='$option3', option4='$option4', answer='$answer' WHERE  question_id = $qid and create_id = $cid" ;
  mysqli_query($connection,$sql);
  echo "$sql";
- header("location:../list.php?ref=edit&id=$cid");
+ header("location:../list.php?ref=edit&id=$cid&message= $question have been updated");
 }
 
 
@@ -71,7 +72,7 @@ foreach($connection->query("SELECT COUNT(question) FROM questions where create_i
     
     $sql2 = "UPDATE createact set numque = $count WHERE create_id = '$cid'";
 $results = mysqli_query($connection,$sql2);
- header("location:../list.php?ref=edit&id=$cid");
+ header("location:../list.php?ref=edit&id=$cid&message=question have been added");
 
  }
 

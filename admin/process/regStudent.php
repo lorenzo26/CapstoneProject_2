@@ -23,7 +23,7 @@
 		$results=mysqli_query($connection,$sql);
 		
 		if ($results) {
-			header("location:../student.php?ref=list&message=$stdname have been registered with ID $stdno");		
+			header("location:../student.php?ref=reg&message=$stdfirstname have been registered with ID $stdno");		
 		}else{
 			$error = $connection->error;
     		header("location:../message.php?err=$error");

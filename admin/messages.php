@@ -31,14 +31,9 @@ function display_content(){
                     <table class="table">
                       <tbody>
                         <tr>                
-                          <th>Student ID</th>
-                          <th>Last Name</th>
-                          <th>First Name</th>
-                          <th>Middle Name</th>
-                          <th>Gender</th>
-                          <th>Email</th>
-                          <th>Address</th>
-                        
+                           <th>Student ID</th>
+                          <th>Name</th>
+                          <th>Status</th>                        
                           <th>Options</th>
                         </tr>
                       </tbody>
@@ -53,20 +48,23 @@ function display_content(){
                         $page1=($page*10)-10;
                       }
                      
-                        $sql = "SELECT * FROM user_info where role = 'Student' ORDER BY lastName limit $page1,10";
+                        $sql = "SELECT * FROM user_info where user_id != '$id' ORDER BY online desc limit $page1,10";
                         $result = mysqli_query($connection,$sql);
 
                       if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
+                          $online= $row['online'];
 echo "
                         <tr>
-                          <td>".$row["user_id"]."</td>
-                          <td>".$row["lastName"]."</td>
-                          <td>".$row["firstName"]."</td>
-                          <td>".$row["middleName"]."</td>
-                          <td>".$row["gender"]."</td>
-                          <td>".$row["email"]."</td>
-                          <td>".$row["address"]."</td>
+                         <td>".$row["user_id"]."</td>
+                          <td>".$row["lastName"].", ".$row["firstName"]." ".$row["middleName"]."</td>
+                          <td>";
+                          if ($online==1) {
+                           echo "<img src='../images/online.png' alt ='online' class ='online'>";
+                          }else{
+                            echo "<img src='../images/offline.png' alt ='offline' class='offline'>";
+                          }
+echo "                          </td>
                           <td>                      
                             <form method='POST' action='Messages.php?to=".$row["user_id"]."&id=$id&ref=newmsg'>
             
@@ -379,7 +377,7 @@ echo '
     </div>
     <div class="modal-footer">
                      
-        <input class = "btn-default btn-xs" title ="SEND" type="submit" name="send" value="SEND">
+        <input class = "btn-default btn-sm" title ="SEND" type="submit" name="send" value="SEND">
       </form>
     </div>  
 ';
@@ -481,5 +479,40 @@ echo '
 }
 require_once('admintemplate.php');
 	?>
+
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Message</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            <?php
+              if(isset($_GET['message'])){
+                echo $_GET['message'];
+              }
+            ?>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+<?php
+    if(isset($_GET['message'])){ ?>
+      <script type="text/javascript">
+        $('#myModal').modal('show');
+     
+    <?php } ?>
+</script>
+
 
 

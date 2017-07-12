@@ -13,7 +13,7 @@ if(@$_GET['q']==1){
     <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="./?ref='.$_SESSION['username'].' "><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active"> List</a></li>
       </ol>
     </section>
@@ -26,7 +26,6 @@ if(@$_GET['q']==1){
               <section class="col-lg-12">
                 <div class="box box-info">
                   <div class="box-header">
-                    <i class="fa fa-users"></i>
                     <h3 class="box-title">Activity found on Database</h3>
                   </div>
                   <div class="box-body">
@@ -132,7 +131,7 @@ echo '
   <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="./?ref='.$_SESSION['username'].' "><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="list.php?q=1&ref='.$stdid.'">List</a></li>
         <li class="active">Assesment</li>
       </ol>
@@ -140,7 +139,7 @@ echo '
     </div>
     <div>
       <h4>Assessment Taken</h4>
-      You have already attempt the exam..
+      You have already attempt the activity..
       Click <a href="Result.php?id='.$stdid.'&ref=result1">here</a> to see the Result
     </div>';
     }elseif ($examstate == "locked") {
@@ -148,18 +147,20 @@ echo '
       echo '        <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="list.php?q=1&ref='.$stdid.'">Locked</a></li>
+        <li><a href="./?ref='.$_SESSION['username'].' "><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="list.php?q=1&ref='.$stdid.'">List</a></li>
         <li class="active">Locked</li>
       </ol>
     </section>
     </div>
-    LOCKED';
+    <h4>Assessment Locked</h4>
+      The activity is locked ..
+      Click <a href="list.php?q=1&ref='.$stdid.'&ref=result1">here</a> to go back';
     } elseif ($countcol==0) {
       echo '        <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="./?ref='.$_SESSION['username'].' "><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="list.php?q=1&ref='.$stdid.'">List</a></li>
         <li class="active">Locked</li>
       </ol>

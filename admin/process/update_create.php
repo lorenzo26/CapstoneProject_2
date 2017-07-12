@@ -12,8 +12,7 @@ $sql ="INSERT INTO createact (create_id, title, numque,status) VALUES  ('$create
 $result = mysqli_query($connection,$sql);
 
 if ($result) {
-	echo "$sql";
-header("location:../create.php?q=4&step=2&eid=$create_id&n=$numque");
+header("location:../create.php?q=4&step=2&eid=$create_id&n=$numque&message=$title have been created");
 }else{
 	$error = $connection->error;
 	

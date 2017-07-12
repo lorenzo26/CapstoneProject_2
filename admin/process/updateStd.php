@@ -13,7 +13,16 @@ if(isset($_POST['upstd'])){
     $sql =  "UPDATE user_info SET firstName = '$firstname', middleName = '$middlename',  lastName = '$lastname', email = '$email', address = '$address', gender = '$gender' WHERE user_id = $stdid"
 	;
 
-    mysqli_query($connection, $sql);
-    header("location:../student.php?ref=list");
+    
+        $results=mysqli_query($connection,$sql);
+        
+        if ($results) {
+            header("location:../student.php?ref=list&message=ID $stdid have been Updated");        
+        }else{
+            $error = $connection->error;
+            header("location:../student.php?ref=list&message=$error");
+        }
+    $connection->close();
+
 }
 ?>

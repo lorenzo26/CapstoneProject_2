@@ -148,6 +148,7 @@ echo '
     </div>
     <div class="borderStudent">
       <section class="content-header">
+      <a title ="ADD Question" class = "add btn-default btn-lg" href = "list.php?cid='.$id.'&ref=addq"> ADD</a>
         <h1>List Of Question</h1>
           <section class = "content">
             <div class="row">
@@ -233,7 +234,7 @@ echo "
           </div>
         </section>
       </section>
-      <a title ='ADD Question' class = 'add btn-primary btn-lg' href = 'list.php?cid=$id&ref=addq'> ADD</a>
+      
     </div>
 
  
@@ -343,8 +344,9 @@ if ($_GET['ref']=="addq") {
     </section>
     </div>
   <div class="row">
-    <span class="title1" ><b>Enter Question Details</b></span><br /><br />
+    
       <div class="col-md-3"></div><div class="col-md-6">
+      <span class="title1" ><b>Enter Question Details</b></span><br /><br />
         <form class="form-horizontal title1" name="form" action="process/addques.php?cid='.$cid.'"  method="POST">
         <fieldset>
 ';
@@ -385,7 +387,7 @@ if ($_GET['ref']=="addq") {
           </div>
       </div>
       <br />
-        < b>Correct answer</b>:<br />
+        <b>Correct answer</b>:<br />
       <div class="form-group">
         <label class="col-md-12 control-label" for="option"></label>  
         <div c  lass="col-md-12">
@@ -410,6 +412,40 @@ echo '
 	
 	require_once('admintemplate.php');
 	?>
+ <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Message</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            <?php
+              if(isset($_GET['message'])){
+                echo $_GET['message'];
+              }
+            ?>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+<?php
+    if(isset($_GET['message'])){ ?>
+      <script type="text/javascript">
+        $('#myModal').modal('show');
+     
+    <?php } ?>
+</script>
+
   <script type="text/javascript">
   function ConfirmDelete(){
       var d = confirm('Do you really want to delete data?');

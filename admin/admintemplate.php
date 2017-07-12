@@ -3,12 +3,22 @@ include('../db_config/database.php');
 $sql = "SELECT * FROM user_info where user_id='$myusername'";
                $result = mysqli_query($connection,$sql);
 
+foreach($connection->query("SELECT COUNT(unread_email) FROM email WHERE unread_email = 1") as $row) {  
+        $count = $row['COUNT(unread_email)'] ;  
+}
+foreach($connection->query("SELECT COUNT(unread_msg) FROM message WHERE unread_msg = 1 AND sentTo_id = '$myusername'") as $row) {  
+        $countmsg = $row['COUNT(unread_msg)'] ;  
+}
+foreach($connection->query("SELECT COUNT(online) FROM user_info WHERE online = 1 And user_id != '$myusername'") as $row) {  
+        $countol = $row['COUNT(online)'] ;  
+}
                   if ($result->num_rows > 0) {
         
                 while($row = $result->fetch_assoc()) {
                  $avatar = $row['avatar'];
                  $gender = $row['gender'];
                  $regid = $row['user_id'];
+                  $role = $row['role'];
                  $firstname = $row['firstName'];
                  if ($avatar == null) {
                      if ($gender == "Male") {
@@ -39,6 +49,7 @@ $sql = "SELECT * FROM user_info where user_id='$myusername'";
 
 </head>
 <body onload="myFooter()">
+<button onclick="topFunction()" class="btn btn-info" id="myBtn" title="Go to top">Top</button>
 <nav class="navbar-default" >
 <div class="nav-side-menu">
 
@@ -53,6 +64,7 @@ $sql = "SELECT * FROM user_info where user_id='$myusername'";
     <div class="divAvatar"> 
    <img class="image-round" src="<?php echo "$link"; ?>" alt="avatar">
         <h4><?php echo "$firstname"; ?></h4>
+        <h6><?php echo "$role,$regid"; ?></h6>
 
         </div> 
     <div class="menu-list">
@@ -86,9 +98,9 @@ $sql = "SELECT * FROM user_info where user_id='$myusername'";
                 <a href="#"> Messages</a>
             </li>
             <ul class="sub-menu collapse" id="messages">
-                <li><a href="messages.php?id=<?php echo "$regid"; ?>&ref=student">Message</a></li>
-                <li><a href="messages.php?ref=inbox&id=<?php echo "$regid"; ?>">Inbox</a></li>
-                <li><a href="email.php">Email</a></li>
+                <li><a href="messages.php?id=<?php echo "$regid"; ?>&ref=student">Message (<?php echo "$countol"; ?>)</a></li>
+                <li><a href="process/read_msg.php?id=<?php echo "$regid"; ?>">Inbox  (<?php echo "$countmsg"; ?>)</a></li>
+                <li><a href="process/read_email.php">Email (<?php echo "$count"; ?>)</a></li>
                 <li><a href="messages.php?ref=sentbox&id=<?php echo "$regid"; ?>">Sent Messages</a></li>
             </ul>       
         </ul>
@@ -104,11 +116,12 @@ $sql = "SELECT * FROM user_info where user_id='$myusername'";
     <div class="dropdown-menu ">
         <img class="image-round" src="<?php echo "$link"; ?>" alt="avatar">
         <h4 class="name2"><?php echo "$firstname"; ?></h4>
+        <h6><?php echo "$role,$regid"; ?></h6>
 
 
         <hr>
         <a class="profile btn btn-default btn-flat" href="profile.php?ref=<?php echo "$regid"; ?>">Profile</a>
-        <a class="signOut btn btn-default btn-flat" href="process/logout.php">Sign out</a>
+        <a class="signOut btn btn-default btn-flat" href="process/logout.php?ref=<?php echo "$regid"; ?>">Sign out</a>
     </div>
   </div>
 </div>
@@ -128,6 +141,7 @@ $sql = "SELECT * FROM user_info where user_id='$myusername'";
     <script src="../javascript/footer.js"></script>
    
     <script src="../js/bootstrap.min.js"></script>
+    <script src="../javascript/top.js"></script>
     
 </body>
 </html>

@@ -5,7 +5,7 @@ if(isset($_POST['delete'])){
 			$id = $_GET['id'];		
 			$delete_info =  "delete from result_info where student_id = $stdid and create_id = '$id' "; 
 		    $delete_result = mysqli_query($connection, $delete_info); 
-		    $sql =  "delete from result where student_id = $stdid"; 
+		    $sql =  "delete from result where student_id = $stdid and create_id = '$id' "; 
 		    $result = mysqli_query($connection, $sql); 		
 		   
 			if(!$result)
@@ -13,7 +13,7 @@ if(isset($_POST['delete'])){
 		        echo mysqli_error($connection);
 		      
 		    }else{
-		    	   header("location:../Result.php");
+		    	   header("location:../Result.php?message=Result have been deleted");
 		    }
 		     
 		}

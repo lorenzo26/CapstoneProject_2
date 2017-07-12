@@ -12,7 +12,7 @@ function display_content(){
     <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="./?ref='.$_SESSION['username'].' "><i class="fa fa-dashboard"></i> Home</a></li>
          <li class ="active">Student</li>
       </ol>
     </section>
@@ -48,17 +48,24 @@ function display_content(){
                         $page1=($page*10)-10;
                       }
                      
-                        $sql = "SELECT * FROM user_info where role = 'Student' ORDER BY lastName limit $page1,10";
+                        $sql = "SELECT * FROM user_info where user_id != '$id' ORDER BY  online desc limit $page1,10";
                         $result = mysqli_query($connection,$sql);
 
                       if ($result->num_rows > 0) {
                         while($row = $result->fetch_assoc()) {
+                          $online= $row['online'];
 echo "
                         <tr>
                           <td>".$row["user_id"]."</td>
                           <td>".$row["lastName"].", ".$row["firstName"]." ".$row["middleName"]."</td>
-                          <td>".$row['online']."</td>
-                          <td>                      
+                          <td>";
+                          if ($online==1) {
+                           echo "<img src='../images/online.png' alt ='online' class ='online'>";
+                          }else{
+                            echo "<img src='../images/offline.png' alt ='offline' class='offline'>";
+                          }
+  echo "                       </td>
+                         <td>                      
                             <form method='POST' action='Messages.php?to=".$row["user_id"]."&id=$id&ref=newmsg'>
             
                               <input class = 'btn-default btn-xs' title ='SEND message to " .$row["lastName"], "," ,$row["firstName"] ."' type='submit' name='sendmsg' value='SEND MESSAGE'>
@@ -122,7 +129,7 @@ echo '
 <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="./?ref='.$_SESSION['username'].' "><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href ="Messages.php?ref=student&id=<?php echo "$from"; ?>">Student</a></li>
          <li class ="active">Create Message</li>
       </ol>
@@ -167,7 +174,7 @@ echo '
    <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="./?ref='.$_SESSION['username'].' "><i class="fa fa-dashboard"></i> Home</a></li>
          <li class ="active">Inbox</li>
       </ol>
     </section>
@@ -276,7 +283,7 @@ echo '
     <div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="./?ref='.$_SESSION['username'].' "><i class="fa fa-dashboard"></i> Home</a></li>
          <li><a href="Messages.php?ref=inbox&id='.$id.'">Inbox</a></li>
           <li class ="active">Reply</li>
       </ol>
@@ -473,4 +480,39 @@ echo '
 require_once('studenttemplate.php');
 	?>
 
+
+
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Message</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            <?php
+              if(isset($_GET['message'])){
+                echo $_GET['message'];
+              }
+            ?>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+<?php
+    if(isset($_GET['message'])){ ?>
+      <script type="text/javascript">
+        $('#myModal').modal('show');
+     
+    <?php } ?>
+</script>
 

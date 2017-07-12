@@ -12,9 +12,9 @@ ini_set('max_execution_time', 300);
 	while ( $q_id <= $count) {	
 		$qid = $_POST['qid'.$q_id];
 		$answer = $_POST['q'.$q_id];
-		$answer = "INSERT INTO result(student_answer, question_id,student_id, question_num) VALUES ('$answer','$qid','$stdid',$q_id)";
+		$answer = "INSERT INTO result(student_answer, question_id,student_id, question_num,create_id) VALUES ('$answer','$qid','$stdid',$q_id,$id)";
 		$results = mysqli_query($connection,$answer);
-		$sql2 = "SELECT * from questions q JOIN result r ON (q.question_id=r.question_id) Where r.student_id = $stdid and create_id = $id";
+		$sql2 = "SELECT * from questions q JOIN result r ON (q.question_id=r.question_id) Where r.student_id = $stdid and r.create_id = $id";
 		$result = mysqli_query($connection,$sql2);
 		$q_id++;
 
@@ -26,7 +26,7 @@ ini_set('max_execution_time', 300);
 			if ($student_answer==$correct_answer) {
 				$mark = "UPDATE  result SET mark ='Correct' where question_id = '$qid'";
 				$markresults = mysqli_query($connection,$mark);
-			}elseif ($student_answer!=$correct_answer) {	
+			}else {	
 				$mark = "UPDATE  result SET mark ='WRONG' where question_id = '$qid'";
 				$markresults = mysqli_query($connection,$mark);
 			}
@@ -43,7 +43,7 @@ ini_set('max_execution_time', 300);
 			foreach($connection->query("SELECT COUNT(question_id) FROM questions where create_id = $id ") as $row){
 				$countnumques = $row['COUNT(question_id)'] ;  
 				$percent = (($countcorrect/$countnumques)*100);
-				if ($percent>=75) {
+				if ($percent>=70) {
 					$status="PASS";
 				}else{
 					$status="FAILED";

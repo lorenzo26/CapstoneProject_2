@@ -17,7 +17,7 @@ echo '
 		<div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="./?ref='.$_SESSION['username'].' "><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active"> Result</a></li>
       </ol>
     </section>
@@ -80,14 +80,14 @@ if ($_GET['ref']=="result2") {
 
 	$cid = $_GET['cid'];
 	$id = $_GET['id'];
-	$sql = "SELECT * FROM questions q JOIN result r ON (q.question_id=r.question_id) Where create_id = $cid AND student_id = $id";
+	$sql = "SELECT * FROM questions q JOIN result r ON (q.question_id=r.question_id) Where r.create_id = $cid AND student_id = $id";
 	$result = mysqli_query($connection,$sql);
 	echo '
 
 		<div class="content-wrapper">
     <section class="content-header">
       <ol class="breadcrumb">
-        <li><a href="./"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="./?ref='.$_SESSION['username'].' "><i class="fa fa-dashboard"></i> Home</a></li>
         <li> <a href="Result.php?ref=result1&id='.$id.'"> Result</a></li>
          <li class="active"> Review</a></li>
       </ol>

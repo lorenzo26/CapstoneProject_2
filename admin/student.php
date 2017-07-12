@@ -235,7 +235,41 @@ echo '
 require_once('admintemplate.php');
 
 ?>
-<script type="text/javascript">
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Message</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            <?php
+              if(isset($_GET['message'])){
+                echo $_GET['message'];
+              }
+            ?>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+<?php
+    if(isset($_GET['message'])){ ?>
+      <script type="text/javascript">
+        $('#myModal').modal('show');
+     
+    <?php } ?>
+    </script>
+      <script type="text/javascript">  
 	function ConfirmDelete(){
    		var d = confirm('Do you really want to delete data?');
    		

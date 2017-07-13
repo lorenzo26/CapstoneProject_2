@@ -42,7 +42,7 @@ function content(){
         			var email = document.createElement("INPUT");
         			email.className = "form-control";
         			email.setAttribute("name","email");
-        			email.setAttribute("type","text");
+        			email.setAttribute("type","email");
         			email.setAttribute("placeholder","Email Address");
                     email.setAttribute("required","true");
         			var message = document.createElement("TEXTAREA");

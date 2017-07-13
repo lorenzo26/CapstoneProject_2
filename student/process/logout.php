@@ -6,8 +6,8 @@ $name = $_GET['ref'];
             mysqli_query($connection,$sql);
                echo "$sql";
 	session_start();
-	$_SESSION['loggedin'] = false;
+		$_SESSION['loggedin'] = false;
 	session_destroy();
-	$myuser = $_SESSION['username'];
+		$myuser = $_SESSION['username'];
 	header("location:../../");
 ?>

@@ -125,7 +125,16 @@ echo '
 												<td>'.$row['question'].'</td>
 												<td>'.$row['student_answer'].'</td>
 												<td>'.$row['answer'].'</td>
-												<td>'.$row['mark'].'</td>
+												<td>';
+													if ($row['mark']=='Correct') {
+														echo '<i class="fa fa-check" aria-hidden="true"></i>';
+													}else{
+														echo '<i class="fa fa-times" aria-hidden="true"></i>';
+													}
+
+
+echo '											
+												</td>
 												
 											</tr>
 ';

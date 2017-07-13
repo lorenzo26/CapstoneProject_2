@@ -98,13 +98,6 @@ width: 40%;
   width: 100%;
 }
 
-.box-profile{
-  border-top: 1px solid black;
-  padding: 25px;
-  margin-bottom: 50px;
-  box-sizing: border-box;
-  text-align: center;
-}
 
 .list-group{
  text-align: left;
@@ -293,15 +286,18 @@ width: 40%;
 
 /*/Sidebar*/
 
-tbody { 
-}
+
+/*CONTENT*/
 .container-fluid,.navbar-default,.dropdown-menu{
   background-color: #23282e;
 }
 
 .borderStudent{
   width: 95%;
-   margin: 0 auto;
+  margin: 0 auto;
+  background-color: white;
+  border-top: 5px solid #97cef0;
+  padding: 25px;
 
 }
 
@@ -320,17 +316,17 @@ tbody {
 }
 
 .banner{
-    width: 100%;
-    margin-bottom: 50px;
-    margin:0 auto;
-    opacity: 0.8;
+  width: 100%;
+  margin-bottom: 50px;
+  margin:0 auto;
+  opacity: 0.8;
 }
 
 .contents {
-     background: rgba(0,0,0,0.5);
-     width: 100%;
-     margin: 0 auto;
-     box-shadow: 0px 0px 30px white;
+  background: rgba(0,0,0,0.5);
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0px 0px 30px white;
 }
 
 .button-log-prof{
@@ -343,6 +339,7 @@ tbody {
 .botton-bottom {
   margin-top: 200px;
 }
+
 .content-header{
   padding-bottom: 20px;
 }
@@ -354,9 +351,22 @@ tbody {
 }
  
 .border_registerform{
-  padding: 20px;
+  padding: 25px;
   width: 90%;
   margin: 0 auto;
+  background-color: white;
+  border-top: 5px solid #97cef0;
+}
+
+.box-profile{
+  padding: 25px;
+  padding-bottom: 60px;
+  margin-bottom: 50px;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: white;
+  border-top: 5px solid #97cef0;
+
 }
 
 .form-control{
@@ -369,7 +379,6 @@ tbody {
 
 
 .title1 {
-  /*margin-left:20%;*/
   font-size:30px;
   text-align: center;
 }
@@ -391,16 +400,15 @@ tbody {
 .create {
   padding-top: 50px;
   text-align: center;
-
 }
 
 .icon{
   position: absolute;
-    right: 10%;
-    text-align: center;
-    z-index: 0;
-    top: 30px;
-    color: rgba(0,0,0,0.15)
+  right: 10%;
+  text-align: center;
+  z-index: 0;
+  top: 30px;
+  color: rgba(0,0,0,0.15)
 }
 
 .student-reg{
@@ -410,15 +418,15 @@ tbody {
 }
 
 .passmark {
-      background-color: #00a65a;
-      border:3px solid gray;
-      padding-bottom: 0;
+  background-color: #00a65a;
+  border:3px solid gray;
+  padding-bottom: 0;
 }
 
 .fail{
-      background-color: #dd4b39;
-      border:3px solid gray;
-      padding-bottom: 0;
+  background-color: #dd4b39;
+  border:3px solid gray;
+  padding-bottom: 0;
 }
 
 .inbox{
@@ -433,68 +441,67 @@ tbody {
 }
 .activity{
   background-color: #89c553;
- border:3px solid gray;
+  border:3px solid gray;
   padding-bottom: 0;
 }
 
 .small-box-footer{
-      position: relative;
-    text-align: center;
-    padding: 10px 0;
-    color: #fff;
-    color: rgba(255,255,255,0.8);
-    display: block;
-    z-index: 10;
-    background: rgba(0,0,0,0.1);
-    text-decoration: none;
-    bottom: 0;
+  position: relative;
+  text-align: center;
+  padding: 10px 0;
+  color: #fff;
+  color: rgba(255,255,255,0.8);
+  display: block;
+  z-index: 10;
+  background: rgba(0,0,0,0.1);
+  text-decoration: none;
+  bottom: 0;
 
 }
 .breadcrumb{
-position: relative;
-    margin-top: 5px;
-    float: none;
-    background: #d2d6de;
-    padding-left: 5px;
-     padding-right:  5px;
-  }
-  .content-header{
-    padding: 0;
-  }
-
-
-.inline li {
-    display: inline-block;
-
-  }
-
-.add{
-  margin-top: 20px;
- float: right;
-
+  position: relative;
+  margin-top: 5px;
+  float: none;
+  background: #d2d6de;
+  padding-left: 5px;
+  padding-right:  5px;
 }
 
+.content-header{
+  padding: 0;
+}
+
+.inline li {
+  display: inline-block;
+}
+
+.add{
+ margin-top: 20px;
+ float: right;
+}
 
 .online{
   width: 20px;
-
 }
+
 .offline {
   width: 15px;
 }
+
 #myBtn {
-    display: none;
-    position: fixed;
-    bottom: 60px;
-    right: 10px;
-    z-index: 99;
-    border: none;
-    outline: none;
-    color: white;
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 10px;
+  display: none;
+  position: fixed;
+  bottom: 60px;
+  right: 10px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
 }
+
 .list-group-item {
   height: 70px;
 }
@@ -502,3 +509,5 @@ position: relative;
 .carousel{
   padding-top: 50px;
 }
+
+/*/CONTENT*/

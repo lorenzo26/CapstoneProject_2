@@ -15,6 +15,7 @@ echo '
          <li class ="active"<i class="fa fa-dashboard"></i>Create</li>
       </ol>
     </section>
+    <div class="borderStudent">
   <div class="row create">
     <span class="title1" ><b>Create Activity</b></span><br /><br />
       <div class="col-md-3"></div><div class="col-md-6">    
@@ -43,6 +44,7 @@ echo '
         </div>
       </fieldset>
     </form>
+  </div>
   </div>';
 }
 
@@ -56,6 +58,7 @@ echo '
          <li class ="active">Enter Question</li>
       </ol>
     </section>
+    <div class="borderStudent">
       <div class="row">
         
           <div class="col-md-3"></div><div class="col-md-6">
@@ -121,6 +124,7 @@ echo '
 
         </fieldset>
       </form>
+    </div>
     </div>';
 
 }

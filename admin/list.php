@@ -1,4 +1,4 @@
-
+  
 <?php
 include 'check_login.php';
   function get_title(){
@@ -50,46 +50,51 @@ if ($_GET['ref']=="list") {
 									   
                         $sql = "SELECT * FROM createact limit $page1,10";
                         $result = mysqli_query($connection,$sql);
+                        
                       if ($result->num_rows > 0) {
+                        $num =1;
                         while($row = $result->fetch_assoc()) {
+                          $id = $row["create_id"];
+                          $title=$row["title"];
+                          $status =$row['status'];
+                          foreach($connection->query("SELECT COUNT(create_id) FROM questions where create_id = '$id'") as $row) {  
+                          $count = $row['COUNT(create_id)'] ;  
+                        }
                           
 echo "
                    			<tr>
-                   				<td>".$row["title"]."</td>
-                   				<td>".$row["title"]."</td>
-                   				<td>".$row["numque"]."</td>
-                          <td>".$row['status']."</td>
-                          		<td>
-                              <div class='inline'>
-                          
-                            <li>               				   
-                            <form method='POST' action='list.php?ref=edit&id=".$row["create_id"]."'>
-            
-                              <input class = 'btn-default btn-sm' title ='EDIT " .$row["title"]."' type='submit' name='edit' value='EDIT'>
-                            </form>
-                            </li>  
-                            <li>  
-               					    <form method='POST' action='process/deletelist.php?ref=".$row["create_id"]."' onSubmit='return ConfirmDelete();'>
-            
-                              <input class = 'btn-default btn-sm' title ='DELETE " .$row["title"]."' type='submit' name='delete' value='DELETE'>
-                            </form>
-                            </li> 
-                            <li>   
-                            <form method='POST' action='process/list.php?ref=".$row["create_id"]."'>";
-                         if ($row['status']=="locked") {
-                           echo "  <input class = 'btn-default btn-sm' title ='Unlock " .$row["title"]."' type='submit' name='unlock' value='Unlock'>";
-                          }else{
-                             echo "  <input class = 'btn-default btn-sm' title ='Lock " .$row["title"]."' type='submit' name='lock' value='Lock'>";
-                          }
-   echo "             
-
-      </form>     
-      <li>  
-      </div>
+                   				<td>".$num."</td>
+                   				<td>".$title."</td>
+                   				<td>".$count."</td>
+                          <td>".$status."</td>
+                          <td>
+                            <div class='inline'>                          
+                              <li>               				   
+                                <form method='POST' action='list.php?ref=edit&id=".$id."'>
+                                  <input class = 'btn-default btn-sm' title ='EDIT " .$title."' type='submit' name='edit' value='EDIT'>
+                                </form>
+                              </li>  
+                              <li>  
+               					        <form method='POST' action='process/deletelist.php?ref=".$id."' onSubmit='return ConfirmDelete();'>
+                                  <input class = 'btn-default btn-sm' title ='DELETE " .$title."' type='submit' name='delete' value='DELETE'>
+                                </form>
+                              </li> 
+                              <li>   
+                                <form method='POST' action='process/list.php?ref=".$id."'>";
+                                  if ($status=="locked") {
+echo "  
+                                    <input class = 'btn-default btn-sm' title ='Unlock " .$title."' type='submit' name='unlock' value='Unlock'>";
+                                  }else{
+echo "                              <input class = 'btn-default btn-sm' title ='Lock " .$title."' type='submit' name='lock' value='Lock'>";
+                                  }
+echo "             
+                              </form>     
+                              </li>  
+                            </div>
                           </td>
                			    </tr>
 ";
-                        }
+                    $num++;    }
                       } $connection->close();
 echo '              			 
  					            </tbody>
@@ -148,7 +153,7 @@ echo '
     </div>
     <div class="borderStudent">
       <section class="content-header">
-      <a title ="ADD Question" class = "add btn-default btn-lg" href = "list.php?cid='.$id.'&ref=addq"> ADD</a>
+      <a title ="ADD Question" class = "add btn-primary btn-lg" href = "list.php?cid='.$id.'&ref=addq"> ADD</a>
         <h1>List Of Question</h1>
           <section class = "content">
             <div class="row">
@@ -256,6 +261,7 @@ if ($_GET['ref']=="editQue") {
       </ol>
     </section>
     </div>
+  <div class="borderStudent">
   <div class="row create">
     <span class="title1" "><b>Enter Question Details</b></span><br /><br />
     <div class="col-md-3"></div><div class="col-md-6">
@@ -324,6 +330,7 @@ echo '
             </div>
             </fieldset>
           </form>
+      </div>
       </div>';
 
       }
@@ -343,6 +350,7 @@ if ($_GET['ref']=="addq") {
       </ol>
     </section>
     </div>
+    <div class="borderStudent">
   <div class="row">
     
       <div class="col-md-3"></div><div class="col-md-6">
@@ -406,6 +414,7 @@ echo '
 
         </fieldset>
       </form>
+    </div>
     </div>';
 }
 }

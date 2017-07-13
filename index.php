@@ -24,6 +24,8 @@
 	        	<?php
 	        		if(isset($_GET['login_err'])){
 	        			echo $_GET['login_err'];
+	        		}elseif(isset($_GET['message'])){
+	        			echo $_GET['message'];
 	        		}
 	        	?>
 	        </p>
@@ -48,7 +50,12 @@
 			<script type="text/javascript">
 				$('#myModal').modal('show');
 			</script>
-		<?php	} ?>
+		<?php	} 
+if(isset($_GET['message'])){ ?>
+			<script type="text/javascript">
+				$('#myModal').modal('show');
+			</script>
+		<?php	}		?>
 	  
 </body>
 </html>

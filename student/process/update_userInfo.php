@@ -9,8 +9,6 @@ if (isset($_POST['upschool'])) {
 	$newpass = $_POST['newpass'];
 	$conpass = $_POST['conpass'];
 	require_once('../../db_config/database.php');
-
-	
 		if ($newpass!=$conpass) {
 			echo "Password not Match";
 		}else{

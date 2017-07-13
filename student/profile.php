@@ -50,12 +50,12 @@ $connection->close();
               <b>Member Since</b> <a class="pull-right"><?php echo "$regdate"; ?></a>
             </li>
           </ul>
-          <form action="process/update_profilepics.php?ref=<?php echo "$regid"; ?>";" method="POST" enctype="multipart/form-data">
-            <input type="file" name="f1" accept="image/*" required><br>     
-            <button type="submit" class="pull-right btn btn-default" name="uplogo">Update Avatar
-                <i class="fa fa-arrow-circle-up"></i>
-            </button>
-          </form>
+            <form action="process/update_profilepics.php?ref=<?php echo "$regid"; ?>";" method="POST" enctype="multipart/form-data">
+              <input type="file" name="f1" accept="image/*" required><br>     
+              <button type="submit" class="pull-right btn btn-default" name="uplogo">Update Avatar
+                  <i class="fa fa-arrow-circle-up"></i>
+              </button>
+            </form>
         </div>
       </div>
     </section>

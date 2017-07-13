@@ -13,28 +13,27 @@
 	require_once('../db_config/database.php');
 	
 
-	if ($name==" ") {
-		$name = "Anonymous";
-		$sql = "INSERT INTO email(name, email, message) VALUES ('$name','$email','$message')";
+	if ($name== '') {
+		
+		$sql = "INSERT INTO email(name, email, message,unread_email) VALUES ('Anonymous','$email','$message','1')";
 		$results=mysqli_query($connection,$sql);
 
 		if ($results) {
-			header("location:../index.php ?message=message sent");		
+			header("location:.././?message=message sent");		
 		}else{
 			$error = $connection->error;
-    		header("location:../index.php?err=$error");
+    		header("location:.././?err=$error");
 		}
 
-	}else
-	{
-		$sql = "INSERT INTO email(name, email, message) VALUES ('$name','$email','$message')";
+	}else{
+		$sql = "INSERT INTO email(name, email, message,unread_email) VALUES ('$name','$email','$message','1')";
 	$results=mysqli_query($connection,$sql);
 		
 		if ($results) {
-			header("location:../index.php ?message=message sent");		
+			header("location:.././?message=message sent");		
 		}else{
 			$error = $connection->error;
-    		header("location:../index.php?err=$error");
+    		header("location:.././?err=$error");
 		}
 		}
 	$connection->close();

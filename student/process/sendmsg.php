@@ -12,7 +12,7 @@
 	$date = date("Y-m-d");
 	echo "$time";
 	echo "$date";
-	$sql = "INSERT INTO message(from_id,messages,sentTo_id,date,time) VALUES ('$from','$msg','$sendTo','$date','$time')";
+	$sql = "INSERT INTO message(from_id,messages,sentTo_id,date,time,unread_msg) VALUES ('$from','$msg','$sendTo','$date','$time','1')";
 	$results=mysqli_query($connection,$sql);
 	echo "$sql";
 if ($results) {

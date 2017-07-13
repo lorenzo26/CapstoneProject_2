@@ -137,11 +137,13 @@ echo '
       </ol>
     </section>
     </div>
+    <div class="borderStudent">
     <div>
       <h4>Assessment Taken</h4>
       You have already attempt the activity..
       Click <a href="Result.php?id='.$stdid.'&ref=result1">here</a> to see the Result
-    </div>';
+    </div>
+    </div>  ';
     }elseif ($examstate == "locked") {
 
       echo '        <div class="content-wrapper">
@@ -153,9 +155,12 @@ echo '
       </ol>
     </section>
     </div>
+    <div class="borderStudent">
     <h4>Assessment Locked</h4>
       The activity is locked ..
-      Click <a href="list.php?q=1&ref='.$stdid.'&ref=result1">here</a> to go back';
+      Click <a href="list.php?q=1&ref='.$stdid.'&ref=result1">here</a> to go back
+      </div>';
+
     } elseif ($countcol==0) {
       echo '        <div class="content-wrapper">
     <section class="content-header">
@@ -170,6 +175,8 @@ echo '
     }else{
     ?>
   <div>
+
+  <div class="borderStudent">
     <form action="process/check.php" method="post">
       <table class = "act">
 <?php
@@ -228,6 +235,7 @@ echo '
       </table>
       <input type="submit" name="chckresult" class="btn btn-primary" value = "Submit Assessment">
     </form>
+  </div>
   </div>
 <?php
   }

@@ -10,29 +10,34 @@ ini_set('max_execution_time', 300);
 	}
 
 	while ( $q_id <= $count) {	
-		$qid = $_POST['qid'.$q_id];
+		$qid[] = $_POST['qid'.$q_id];
 		$answer = $_POST['q'.$q_id];
-		$answer = "INSERT INTO result(student_answer, question_id,student_id, question_num,create_id) VALUES ('$answer','$qid','$stdid',$q_id,$id)";
+		$answer = "INSERT INTO result(student_answer, question_id,student_id, question_num,create_id) VALUES ('$answer','".$_POST['qid'.$q_id]."','$stdid',$q_id,$id)";
 		$results = mysqli_query($connection,$answer);
+		$q_id++;
+	}
+	
 		$sql2 = "SELECT * from questions q JOIN result r ON (q.question_id=r.question_id) Where r.student_id = $stdid and r.create_id = $id";
 		$result = mysqli_query($connection,$sql2);
-		$q_id++;
+		$cnt = 0;
 
 
 	if ($result->num_rows > 0) {			
 		while($row = $result->fetch_assoc()) {
 			$student_answer = $row['student_answer'];
 			$correct_answer = $row['answer'];
+			
 			if ($student_answer==$correct_answer) {
-				$mark = "UPDATE  result SET mark ='Correct' where question_id = '$qid'";
+				$mark = "UPDATE  result SET mark ='Correct' where question_id = '".$qid[$cnt]."'";
 				$markresults = mysqli_query($connection,$mark);
 			}else {	
-				$mark = "UPDATE  result SET mark ='WRONG' where question_id = '$qid'";
+				$mark = "UPDATE  result SET mark ='Wrong' where question_id = '".$qid[$cnt]."'";
 				$markresults = mysqli_query($connection,$mark);
 			}
+			
+			$cnt++;
 			}
 		}
-	}
 
 
 

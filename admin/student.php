@@ -16,34 +16,34 @@ if($_GET['ref']=="reg"){
          <li class ="active">Register Student</li>
       </ol>
     </section>
-    </div>
-  <h3> Register Student </h3>
-  <div class = "border_registerform">
-    <form action="process/regStudent.php" method="post">
-      <div class="form-group">
-        <input type="text" class="form-control" name="firstname"  placeholder="First Name" required>
-        
-        <input type="text" class="form-control" name="middlename"  placeholder="Middle Name" required>
-                  
-        <input type="text" class="form-control" name="lastname"  placeholder="Last Name" required>               
-               
-        <input type="email" class="form-control" name="email"  placeholder="Email" required>
+    </div>   
+    <div class = "border_registerform">
+     <h3> Register Student </h3>
+      <form action="process/regStudent.php" method="post">
+        <div class="form-group">
+          <input type="text" class="form-control" name="firstname"  placeholder="First Name" required>
+          
+          <input type="text" class="form-control" name="middlename"  placeholder="Middle Name" required>
+                    
+          <input type="text" class="form-control" name="lastname"  placeholder="Last Name" required>               
+                 
+          <input type="email" class="form-control" name="email"  placeholder="Email" required>
+                
+          <input type="text" class="form-control" name="address"  placeholder="Address" required>
               
-        <input type="text" class="form-control" name="address"  placeholder="Address" required>
-            
-        <select class="form-control" name="gender" required>
-          <option value="" disabled selected>Select gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-        </select>
-      </div> 
+          <select class="form-control" name="gender" required>
+            <option value="" disabled selected>Select gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div> 
 
-      <div class="box-footer clearfix">
-        <button type="submit" class="pull-right btn btn-default" name="newstd" id="sendEmail">Add Student
-        </button>
-      </div>
-    </form>
-  </div>';
+        <div class="box-footer clearfix">
+          <button type="submit" class="pull-right btn btn-default" name="newstd" id="sendEmail">Add Student
+          </button>
+        </div>
+      </form>
+    </div>';
 }
 
 if($_GET['ref']=="list"){
@@ -174,10 +174,7 @@ echo '
       }
     } else {
   }
-$connection->close();
-// }else{
-//   header("location:./");
-// }
+  $connection->close();
 
 echo '
 
@@ -190,8 +187,9 @@ echo '
       </ol>
     </section>
     </div>
-  <h3> Update Student '.$stdid.' </h3>
+  
   <div class = "border_registerform">
+  <h3> Update Student '.$stdid.' </h3>
     <form action="process/updateStd.php?ref='.$stdid.'" method="post">
       <div class="form-group">
         <input type="text" class="form-control" name="firstname"  placeholder="First Name" required value = "'.$firstname.'">

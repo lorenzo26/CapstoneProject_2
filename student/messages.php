@@ -30,8 +30,7 @@ function display_content(){
                   <div class="box-body">
                     <table class="table">
                       <tbody>
-                        <tr>                
-                          <th>Student ID</th>
+                        <tr>
                           <th>Name</th>
                           <th>Online</th>                        
                           <th>Options</th>
@@ -56,7 +55,6 @@ function display_content(){
                           $online= $row['online'];
 echo "
                         <tr>
-                          <td>".$row["user_id"]."</td>
                           <td>".$row["lastName"].", ".$row["firstName"]." ".$row["middleName"]."</td>
                           <td>";
                           if ($online==1) {
@@ -138,33 +136,33 @@ echo '
 
     <div class="borderStudent">
       <section class="content-header">
-        <h1></h1>
-              <section class = "content">
-              <div class="row">
-                    <section class="col-lg-12">
-                      <div class="box box-info">
-                        <div class="box-body">
-                          <div class="modal-header">
+        <section class = "content">
+          <div class="row">
+            <section class="col-lg-12">
+              <div class="box box-info">
+                <div class="box-body">
+                  <div class="modal-header">
 <?php
-  echo '                  <form method="POST" action="process/sendmsg.php?from='.$from.'&sendto='.$sendTo.'">';
- ?>       
-                          <h4 class="modal-title">Create Message</h4>
-                          <h5 class="modal-title"><?php echo "$name"; ?></h>
-                    
-                        <div class="modal-body">
+echo '               <form method="POST" action="process/sendmsg.php?from='.$from.'&sendto='.$sendTo.'">';
+?>       
+                        <h4 class="modal-title">Create Message</h4>
+                        <h5 class="modal-title"><?php echo "$name"; ?></h>
+            
+                          <div class="modal-body">
                             <textarea class = "form-control" placeholder = " write a text" name="newmsg"></textarea>
-                        </div>
-                        <div class="modal-footer">
-                          <input class = "btn-default btn-xs" title ="SEND" type="submit" name="send" value="SEND">
-                       </form>
-                    </div>  
-                          </div>  
-                      </div>  
-                  </section>
-                </div>
+                          </div>
+                          <div class="modal-footer">
+                            <input class = "btn-default btn-xs" title ="SEND" type="submit" name="send" value="SEND">
+                          </div>
+                      </form>
+                  </div>  
+                </div>  
+              </div>  
             </section>
-          </section>
-      </div>
+          </div>
+      </section>
+      </section>
+    </div>
 <?php
   }
 
@@ -190,7 +188,7 @@ echo '
                         <h3 class="box-title">Messages found on Database</h3>
                     </div>
                     <div class="box-body">
-                <table class="table">
+                      <table class="table">
                           <tbody>
                             <tr>                
                               <th>From</th>
@@ -366,7 +364,7 @@ echo '
           </div>
         </section>
       </section>
-    </div>
+    
 <br>
     <div class="modal-header">
     <form method="POST" action="process/sendreplymsg.php?from='.$id.'&sendto='.$from_id.'">       
@@ -379,7 +377,8 @@ echo '
                      
         <input class = "btn-default btn-xs" title ="SEND" type="submit" name="send" value="SEND">
       </form>
-    </div>  
+    </div> 
+    </div> 
 ';
   }
 
@@ -404,56 +403,56 @@ echo '
                         <h3 class="box-title">Messages found on Database</h3>
                     </div>
                     <div class="box-body">
-                <table class="table">
-                          <tbody>
-                            <tr>                
-                              <th>To</th>
-                              <th>Message</th>
-                              <th>Date</th>
-                            </tr>
-                          </tbody>  
-                          <tbody>';
+                      <table class="table">
+                        <tbody>
+                          <tr>                
+                            <th>To</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                          </tr>
+                        </tbody>  
+                        <tbody>';
 
-                            include('../db_config/database.php');
-                       error_reporting(0);
-                       $id =$_GET['id'];
-                       $page =$_GET['page'];
-                    
-                    if ($page=="" || $page=="1"){
-                      $page1=0;
-                    }else{
-                        $page1=($page*10)-10;
-                      }
-                     
-                       $sql = "SELECT from_id,  concat(lastName,', ',firstName,' ',middleName) as Fullname, sentTo_id, messages ,date  From message JOIN user_info ON (message.sentTo_id = user_info.user_id) WHERE from_id = $id limit $page1,10";
-                          $result = mysqli_query($connection,$sql);
+                                include('../db_config/database.php');
+                           error_reporting(0);
+                           $id =$_GET['id'];
+                           $page =$_GET['page'];
+                        
+                        if ($page=="" || $page=="1"){
+                          $page1=0;
+                        }else{
+                            $page1=($page*10)-10;
+                          }
+                         
+                           $sql = "SELECT from_id,  concat(lastName,', ',firstName,' ',middleName) as Fullname, sentTo_id, messages ,date  From message JOIN user_info ON (message.sentTo_id = user_info.user_id) WHERE from_id = $id limit $page1,10";
+                              $result = mysqli_query($connection,$sql);
 
 
-                          if ($result->num_rows > 0) {
+                           if ($result->num_rows > 0) {
    
                               while($row = $result->fetch_assoc()) {
 echo "
-                              <tr>
-                                <td>".$row["Fullname"]."</td>
-                                <td>".$row["messages"]."</td>
-                                <td>".$row["date"]."</td
-                              </tr>
+                          <tr>
+                            <td>".$row["Fullname"]."</td>
+                            <td>".$row["messages"]."</td>
+                            <td>".$row["date"]."</td
+                          </tr>
 ";
                     }
                   } $connection->close();
 echo '                     
-                  </tbody>
-                </table>
-                    <ul class="pagination">';
+                       </tbody>
+                      </table>
+                      <ul class="pagination">';
                       include('../db_config/database.php');
-                    $sql = "SELECT * FROM message";
-                    $result = mysqli_query($connection,$sql);
+                        $sql = "SELECT * FROM message";
+                        $result = mysqli_query($connection,$sql);
 
-                    if ($result->num_rows > 0) {
-                      print '<tr><td colspan="10">';
-                      $ragents=mysqli_num_rows($result);
-                      $a = $ragents/10;
-                      $a = ceil($a);
+                       if ($result->num_rows > 0) {
+                        print '<tr><td colspan="10">';
+                        $ragents=mysqli_num_rows($result);
+                        $a = $ragents/10;
+                        $a = ceil($a);
                       
                       for ($b=1;$b<=$a;$b++){
  ?> 

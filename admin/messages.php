@@ -366,7 +366,7 @@ echo '
           </div>
         </section>
       </section>
-    </div>
+ 
 <br>
     <div class="modal-header">
     <form method="POST" action="process/sendreplymsg.php?from='.$id.'&sendto='.$from_id.'">       
@@ -380,6 +380,7 @@ echo '
         <input class = "btn-default btn-sm" title ="SEND" type="submit" name="send" value="SEND">
       </form>
     </div>  
+       </div>
 ';
   }
 
@@ -404,46 +405,44 @@ echo '
                         <h3 class="box-title">Messages found on Database</h3>
                     </div>
                     <div class="box-body">
-                <table class="table">
-                          <tbody>
-                            <tr>                
-                              <th>To</th>
-                              <th>Message</th>
-                              <th>Date</th>
-                            </tr>
-                          </tbody>  
-                          <tbody>';
+                    <table class="table">
+                      <tbody>
+                        <tr>                
+                          <th>To</th>
+                          <th>Message</th>
+                          <th>Date</th>
+                        </tr>
+                      </tbody>  
+                      <tbody>';
 
-                            include('../db_config/database.php');
-                       error_reporting(0);
-                       $id =$_GET['id'];
-                       $page =$_GET['page'];
-                    
-                    if ($page=="" || $page=="1"){
-                      $page1=0;
-                    }else{
-                        $page1=($page*10)-10;
-                      }
-                     
-                       $sql = "SELECT from_id,  concat(lastName,', ',firstName,' ',middleName) as Fullname, sentTo_id, messages ,date  From message JOIN user_info ON (message.sentTo_id = user_info.user_id) WHERE from_id = $id limit $page1,10";
-                          $result = mysqli_query($connection,$sql);
-
-
+                        include('../db_config/database.php');
+                           error_reporting(0);
+                           $id =$_GET['id'];
+                           $page =$_GET['page'];
+                        
+                            if ($page=="" || $page=="1"){
+                              $page1=0;
+                            }else{
+                                $page1=($page*10)-10;
+                            }
+                             
+                           $sql = "SELECT from_id,  concat(lastName,', ',firstName,' ',middleName) as Fullname, sentTo_id, messages ,date  From message JOIN user_info ON (message.sentTo_id = user_info.user_id) WHERE from_id = $id limit $page1,10";
+                              $result = mysqli_query($connection,$sql);
                           if ($result->num_rows > 0) {
-   
-                              while($row = $result->fetch_assoc()) {
+
+                            while($row = $result->fetch_assoc()) {
 echo "
-                              <tr>
-                                <td>".$row["Fullname"]."</td>
-                                <td>".$row["messages"]."</td>
-                                <td>".$row["date"]."</td
-                              </tr>
+                        <tr>
+                          <td>".$row["Fullname"]."</td>
+                          <td>".$row["messages"]."</td>
+                          <td>".$row["date"]."</td
+                        </tr>
 ";
                     }
                   } $connection->close();
 echo '                     
-                  </tbody>
-                </table>
+                      </tbody>
+                    </table>
                     <ul class="pagination">';
                       include('../db_config/database.php');
                     $sql = "SELECT * FROM message";

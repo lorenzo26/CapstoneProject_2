@@ -64,7 +64,7 @@ echo "
                           }
   echo "                       </td>
                          <td>                      
-                            <form method='POST' action='Messages.php?to=".$row["user_id"]."&id=$id&ref=newmsg'>
+                            <form method='POST' action='messages.php?to=".$row["user_id"]."&id=$id&ref=newmsg'>
             
                               <input class = 'btn-default btn-xs' title ='SEND message to " .$row["lastName"], "," ,$row["firstName"] ."' type='submit' name='sendmsg' value='SEND MESSAGE'>
                             </form>
@@ -128,7 +128,7 @@ echo '
     <section class="content-header">
       <ol class="breadcrumb">
         <li><a href="./?ref='.$_SESSION['username'].' "><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href ="Messages.php?ref=student&id=<?php echo "$from"; ?>">Student</a></li>
+        <li><a href ="messages.php?ref=student&id=<?php echo "$from"; ?>">Student</a></li>
          <li class ="active">Create Message</li>
       </ol>
     </section>

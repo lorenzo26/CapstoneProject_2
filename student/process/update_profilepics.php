@@ -11,7 +11,7 @@ require_once('../../db_config/database.php');
 	$sql = "UPDATE user_info SET avatar='$image' where user_id ='$id'";
 
 if ($connection->query($sql) === TRUE) {
-    header("location:.././?message=Profile Picture have been updated");
+    header("location:.././?ref=$id&message=Profile Picture have been updated");
 } else {
 	$error = $connection->error;
    header("location:.././?message=$error");
